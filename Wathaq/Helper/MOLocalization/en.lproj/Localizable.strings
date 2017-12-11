@@ -1,0 +1,57 @@
+/* 
+  Localizable.strings
+  Wathaq
+
+  Created by Ahmed Zaky on 11/12/17.
+  Copyright © 2017 Ahmed Zaky. All rights reserved.
+*/
+//uiTabBar title
+
+
+"No_Internet"  = "No Internet Connection";
+"Slow_Internet"  = "Slow Internet Connection";
+"Settings" = "Settings";
+"profile" = "Profile";
+"notifications" = "Notifications";
+"watheq" = "Watheq";
+"myOrders" = "My Orders";
+"Cancel" = "Cancel";
+"Change Language" = "Change Language";
+"login" = "Login";
+"LoginMsg" = "Enter your mobile number and the verification code of the message you will receive on this number";
+"PhoneNum" = "Phone Number";
+"VerificationCode" = "Verification Code";
+"ResendVerificationCode" = "Resend Verification Code";
+"areyoulegalized" = "Are you notarized?";
+"Download the Notaries application from here" = "Download the Notaries application from here";
+"sendPhoneNumber" = "Send Phone Number";
+"sendVerificationCode" = "Send Verification Code";
+"Enter Phone number" = "Enter Phone number!";
+"Enter avalid Phone number" = "Enter avalid Phone number";
+"close" = "Close";
+"Enter your verification code" = "Enter your verification code!";
+"Enter avalid verification number" = "Enter avalid verification number";
+"Verification Code sent succussfully" = "Verification Code sent succussfully";
+"SERVER_ERROR" = "Error occured, please try again later";
+"FillAllFields" = "Please fill all fields";
+"EmailisNotValid" = "Invalid Email Format";
+"Photo Gallery" = "Photo Gallery";
+"Camera" = "Camera";
+"Take Profile Pictuere from" = "Take Profile Pictuere from";
+"hello" = "Hello";
+"CompleteProfileMsg" = "We need to add some data to appear in profile" ;
+"AgreeOnTerms" = "Agree to all terms and conditions";
+"userName" = "user Name";
+"UserMail" = " EMail";
+"Confirm" = "Confirm";
+"Profile Data Completed Thank you" = "Profile Data Completed Thank you";
+"Updatelocation" = "Update location";
+"ProveProfession" = "Proof of profession";
+"ProveProfessionMsg" = "To ensure our service to people, we need some documentation to prove your profession and experience";
+"Lawyer" = "Lawyer";
+"Ma2zon" = "authorized";
+"SendData" = "Send Data";
+"idFile" = "ID Card File";
+"liscenceFile" = "Liscence File";
+"Take Picture from" = "Take Picture from";
+"profession Data files uploaded successfully Thank you" = "files uploaded successfully Thank you";
