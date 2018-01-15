@@ -60,6 +60,9 @@ public enum WatheqApi {
     case UpdateProfile(name:String, email:String, image:String, phone:String)
     case registerDeviceToken(identifier:String, firebaseToken:String)
     case logout(identifier:String)
+    case getNewOrders(Int,Int)
+    case getPendingOrders(Int,Int)
+    case getClosedOrders(Int,Int)
 
 
 }
@@ -69,27 +72,35 @@ extension WatheqApi: TargetType,AccessTokenAuthorizable {
         return ["Content-type": "application/json" , Constants.WebService.ApiKeyName: Constants.WebService.ApiKeyValue]
     }
     
-    public var baseURL: URL { return URL(string: "http://138.197.41.25/watheq/public/api")! }
+    public var baseURL: URL { return URL(string: Constants.ApiConstants.BaseUrl)! }
     public var path: String {
         switch self {
         case .login:
-            return "/lawyer/login"
+            return "api/lawyer/login"
         case .completeProfile:
-            return "/auth/lawyer/completeProfile"
+            return "api/auth/lawyer/completeProfile"
         case .completeFiles:
-            return "/auth/lawyer/completeFiles"
+            return "api/auth/lawyer/completeFiles"
         case .UpdateProfile:
-            return "/auth/lawyer/updateProfile"
+            return "api/auth/lawyer/updateProfile"
         case .registerDeviceToken:
-            return "/auth/lawyer/registerDeviceToken"
+            return "api/auth/lawyer/registerDeviceToken"
         case .logout:
-            return "/auth/lawyer/logout"
+            return "api/auth/lawyer/logout"
+        case .getNewOrders:
+            return "api/auth/client/lawyer/listNewOrders"
+        case .getPendingOrders:
+            return "api/auth/lawyer/order/listPendingOrders"
+        case .getClosedOrders:
+            return "api/auth/lawyer/order/listClosedOrders"
         }
     }
     public var method: Moya.Method {
         switch self {
         case .login,.completeProfile,.completeFiles,.UpdateProfile,.registerDeviceToken,.logout:
             return .post
+        case .getNewOrders,.getPendingOrders,.getClosedOrders:
+            return .get
         }
     }
     
@@ -107,6 +118,12 @@ extension WatheqApi: TargetType,AccessTokenAuthorizable {
             return .requestParameters(parameters: ["identifier":identifier , "firebaseToken" :firebaseToken], encoding: JSONEncoding.default)
         case .logout(let identifier):
             return .requestParameters(parameters: ["identifier":identifier], encoding: JSONEncoding.default)
+        case .getNewOrders(let page, let limit):
+            return .requestParameters(parameters: ["page":page , "limit" : limit], encoding: URLEncoding.default)
+        case .getPendingOrders(let page, let limit):
+            return .requestParameters(parameters: ["page":page , "limit" : limit], encoding: URLEncoding.default)
+        case .getClosedOrders(let page, let limit):
+            return .requestParameters(parameters: ["page":page , "limit" : limit], encoding: URLEncoding.default)
         }
     }
     
@@ -114,7 +131,7 @@ extension WatheqApi: TargetType,AccessTokenAuthorizable {
         switch self {
         case .login:
             return .none
-        case .completeProfile,.completeFiles,.UpdateProfile,.registerDeviceToken,.logout :
+        case .completeProfile,.completeFiles,.UpdateProfile,.registerDeviceToken,.logout,.getNewOrders,.getClosedOrders,.getPendingOrders :
             return .bearer
         }
     }

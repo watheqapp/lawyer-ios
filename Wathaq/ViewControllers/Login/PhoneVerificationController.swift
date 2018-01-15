@@ -10,6 +10,8 @@ import UIKit
 import Firebase
 import CountdownLabel
 import TransitionButton
+import DAKeychain
+
 
 
 class PhoneVerificationController: UIViewController,ToastAlertProtocol {
@@ -216,6 +218,7 @@ class PhoneVerificationController: UIViewController,ToastAlertProtocol {
         let phoneNumber = "+" + (localeCountry?.e164Cc!)! + phoneTextField.text!
         viewModel.loginUser(Phone: phoneNumber, completion: { (userObj, errorMsg) in
             if errorMsg == nil {
+                self.checktoRegisterDeviceToken()
                 if userObj?.isCompleteProfile == true
                 {
                     if userObj?.isCompleteFiles == true
@@ -231,6 +234,47 @@ class PhoneVerificationController: UIViewController,ToastAlertProtocol {
                 {
                     self.performSegue(withIdentifier:"S_VerifyNumber_CompleteProfile", sender: nil)
                 }
+            } else{
+                self.showToastMessage(title:errorMsg! , isBottom:true , isWindowNeeded: true, BackgroundColor: UIColor.redAlert, foregroundColor: UIColor.white)
+            }
+        })
+
+    }
+    
+    func checktoRegisterDeviceToken()
+    {
+        if  UserDefaults.standard.string(forKey: "TokenDevice") != nil
+        {
+            let UuidData : String!
+            if let uuidvalue = DAKeychain.shared["uuid"]
+            {
+                UuidData = uuidvalue
+            }
+            else
+            {
+                let uuid = UUID().uuidString
+                DAKeychain.shared["uuid"] = uuid // Store
+                UuidData = uuid
+            }
+            
+            let NotificationData =  NSMutableDictionary()
+            NotificationData.setValue(UserDefaults.standard.string(forKey: "TokenDevice"), forKey: "token")
+            NotificationData.setValue(UuidData, forKey: "identifier")
+            NotificationData.setValue(NSLocale.preferredLanguages[0], forKey: "locale")
+            
+            
+            self.RegisterDeviceToken(ident: UuidData, FBToken: UserDefaults.standard.string(forKey: "TokenDevice")!)
+            }
+    }
+
+
+    
+    func RegisterDeviceToken(ident :String , FBToken : String)
+    {
+        viewModel.RegisterDeviceToken(identifier:ident , firebaseToken:FBToken,  completion: { (ResponseDic, errorMsg) in
+            if errorMsg == nil {
+               
+                
             } else{
                 self.showToastMessage(title:errorMsg! , isBottom:true , isWindowNeeded: true, BackgroundColor: UIColor.redAlert, foregroundColor: UIColor.white)
             }

@@ -22,15 +22,15 @@ extension UIColor {
     }
     
     class var deepBlue: UIColor {
-        return UIColor(red: 74.0 / 255.0, green: 144.0 / 255.0, blue: 226.0 / 255.0, alpha: 1.0)
+        return UIColor(red: 0.0 / 255.0, green: 147.0 / 255.0, blue: 82.0 / 255.0, alpha: 1.0)
+    }
+    
+    class var LightGreen: UIColor {
+        return UIColor(red: 0.0 / 255.0, green: 198.0 / 255.0, blue: 114.0 / 255.0, alpha: 1.0)
     }
     
     class var lightimpactGray: UIColor {
         return UIColor(red: 149.0 / 255.0, green: 149.0 / 255.0, blue: 149.0 / 255.0, alpha: 1.0)
-    }
-    
-    class var lightpink: UIColor {
-        return UIColor(red: 233.0 / 255.0, green: 61.0 / 255.0, blue: 115.0 / 255.0, alpha: 1.0)
     }
     
     class var battleshipGrey: UIColor {
@@ -141,4 +141,8 @@ extension UIColor {
         return UIColor(red: 240.0 / 255.0, green: 160.0 / 255.0, blue: 28.0 / 255.0, alpha: 1.0)
     }
     
+    class var lightpink: UIColor {
+        return UIColor(red: 233.0 / 255.0, green: 61.0 / 255.0, blue: 115.0 / 255.0, alpha: 1.0)
+    }
 }
+

@@ -8,6 +8,7 @@
 
 import Foundation
 
+// MARK: - Enums
 public extension Date {
 	
 	/// SwifterSwift: Day name format.
@@ -146,7 +147,7 @@ public extension Date {
 	
 	/// SwifterSwift: Weekday.
 	///
-	/// 	Date().weekOfMonth -> 5 // fifth day in the current week.
+	/// 	Date().weekday -> 5 // fifth day in the current week.
 	///
 	public var weekday: Int {
 		return Calendar.current.component(.weekday, from: self)
@@ -568,7 +569,6 @@ public extension Date {
 	/// - Parameter component: calendar component to get date at the beginning of.
 	/// - Returns: date at the beginning of calendar component (if applicable).
 	public func beginning(of component: Calendar.Component) -> Date? {
-		
 		if component == .day {
 			return Calendar.current.startOfDay(for: self)
 		}
@@ -675,6 +675,20 @@ public extension Date {
 	/// - Returns: true if date is in current given calendar component.
 	public func isInCurrent(_ component: Calendar.Component) -> Bool {
 		return Calendar.current.isDate(self, equalTo: Date(), toGranularity: component)
+	}
+	
+	/// SwifterSwift: Date string from date.
+	///
+	///     Date().string(withFormat: "dd/MM/yyyy") -> "1/12/17"
+	///     Date().string(withFormat: "HH:mm") -> "23:50"
+	///     Date().string(withFormat: "dd/MM/yyyy HH:mm") -> "1/12/17 23:50"
+	///
+	/// - Parameter format: Date format (default is "dd/MM/yyyy").
+	/// - Returns: date string.
+	public func string(withFormat format: String = "dd/MM/yyyy HH:mm") -> String {
+		let dateFormatter = DateFormatter()
+		dateFormatter.dateFormat = format
+		return dateFormatter.string(from: self)
 	}
 	
 	/// SwifterSwift: Date string from date.
@@ -833,6 +847,32 @@ public extension Date {
 		let componentValue = components.value(for: component)!
 		return abs(componentValue) <= value
 	}
+	
+	/// SwifterSwift: Random date between two dates.
+	///
+	///     Date.random()
+	///     Date.random(from: Date())
+	///     Date.random(upTo: Date())
+	///     Date.random(from: Date(), upTo: Date())
+	///
+	/// - Parameters:
+	///   - fromDate: minimum date (default is Date.distantPast)
+	///   - toDate: maximum date (default is Date.distantFuture)
+	/// - Returns: random date between two dates.
+	public static func random(from fromDate: Date = Date.distantPast, upTo toDate: Date = Date.distantFuture) -> Date {
+		guard fromDate != toDate else {
+			return fromDate
+		}
+		
+		let diff = llabs(Int64(toDate.timeIntervalSinceReferenceDate - fromDate.timeIntervalSinceReferenceDate))
+		var randomValue: Int64 = 0
+		arc4random_buf(&randomValue, MemoryLayout<Int64>.size)
+		randomValue = llabs(randomValue%diff)
+		
+		let startReferenceDate = toDate > fromDate ? fromDate : toDate
+		return startReferenceDate.addingTimeInterval(TimeInterval(randomValue))
+	}
+	
 }
 
 // MARK: - Initializers
@@ -909,6 +949,17 @@ public extension Date {
 	/// - Parameter unixTimestamp: UNIX timestamp.
 	public init(unixTimestamp: Double) {
 		self.init(timeIntervalSince1970: unixTimestamp)
+	}
+	
+	/// SwifterSwift: Create date object from Int literal
+	///
+	///     let date = Date(integerLiteral: 2017_12_25) // "2017-12-25 00:00:00 +0000"
+	/// - Parameter value: Int value, e.g. 20171225, or 2017_12_25 etc.
+	public init?(integerLiteral value: Int) {
+		let formatter = DateFormatter()
+		formatter.dateFormat = "yyyyMMdd"
+		guard let date = formatter.date(from: String(value)) else { return nil }
+		self = date
 	}
 	
 }

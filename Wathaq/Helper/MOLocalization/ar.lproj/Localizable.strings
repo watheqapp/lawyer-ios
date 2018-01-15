@@ -11,7 +11,7 @@
 "Settings" = "الإعدادات";
 "profile" = "ملفي الشخصي";
 "notifications" = "التنبيهات";
-"watheq" = "وثق";
+"Prices" = "الاسعار";
 "myOrders" = "طلباتي";
 "Cancel" = "إلغاء";
 "Change Language" =  "تغيير اللغة";
@@ -53,4 +53,8 @@
 "liscenceFile" = "التفويض القانوني";
 "Take Picture from" = "التقاط صورة من";
 "profession Data files uploaded successfully Thank you" = "الملفات التي تم تحميلها بنجاح";
-
+"pleaseChooseaddressFirst" = "الرجاء اختيار عنوان";
+"No Orders" = "لا يوجد طلبات";
+"OrderNumber" = "رقم الطلب #";
+"opened" = "مفتوحة";
+"finished" = "منتهية";

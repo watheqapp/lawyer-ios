@@ -11,6 +11,10 @@ import UIKit
 
 struct Constants {
     
+    struct ApiConstants {
+        static let BaseUrl = "http://159.89.41.54/watheq/public/"
+    }
+    
     struct Language {
         static let ARABIC="ar"
         static let ENGLISH="en"
@@ -27,6 +31,8 @@ struct Constants {
         static let flurry = "HBVRP3Y6QCT2CZMFTTQ5"
         static let KeyUser = "UserKey"
         static let keyFirstTimeUser = "keyFirstTimeUser"
+        static let GoogleMapsKey = "AIzaSyCb4KG8z7i2tj3G5Dfe5SFBcLKIsQSCYN4"
+
         
     }
     

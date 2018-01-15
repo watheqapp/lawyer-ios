@@ -25,6 +25,12 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>Watheq wants To access your Camera to use it while you using app</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Watheq wants to access your location while using app to get you nearest requests to you</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>watheq wants To access you photo gallery to use it while you using app</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>DinNextMedium.ttf</string>
@@ -63,11 +69,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Watheq wants to access your location while using app to get you nearest requests to you</string>
-	<key>NSCameraUsageDescription</key>
-	<string>Watheq wants To access your Camera to use it while you using app</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>watheq wants To access you photo gallery to use it while you using app</string>
 </dict>
 </plist>

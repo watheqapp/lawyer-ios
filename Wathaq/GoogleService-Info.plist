@@ -7,21 +7,21 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>238107082721-j8iopguholjo1r9fot3a3vu37h5on5jc.apps.googleusercontent.com</string>
+	<string>96166899429-djc4tjq9su70uprd8fb6i14653e7taun.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.238107082721-j8iopguholjo1r9fot3a3vu37h5on5jc</string>
+	<string>com.googleusercontent.apps.96166899429-djc4tjq9su70uprd8fb6i14653e7taun</string>
 	<key>API_KEY</key>
-	<string>AIzaSyBGWk6rfI20dUaMmThLssUIsEoSTjp7UJs</string>
+	<string>AIzaSyBcXGIQQ403Ndttnn9TfYSF6JSQ5RgUhTc</string>
 	<key>GCM_SENDER_ID</key>
-	<string>238107082721</string>
+	<string>96166899429</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.themar.watheqLawyer</string>
+	<string>com.watheq.watheqmowtheq</string>
 	<key>PROJECT_ID</key>
-	<string>laywer-cdc9a</string>
+	<string>watheq-89cd7</string>
 	<key>STORAGE_BUCKET</key>
-	<string>laywer-cdc9a.appspot.com</string>
+	<string>watheq-89cd7.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<true></true>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -33,8 +33,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:238107082721:ios:47e071169614068e</string>
+	<string>1:96166899429:ios:5f4c4dd30de363f2</string>
 	<key>DATABASE_URL</key>
-	<string>https://laywer-cdc9a.firebaseio.com</string>
+	<string>https://watheq-89cd7.firebaseio.com</string>
 </dict>
 </plist>

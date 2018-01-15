@@ -7,18 +7,66 @@
 //
 
 import UIKit
+import DAKeychain
 
-class WatheqViewController: AbstractViewController {
+class WatheqViewController: AbstractViewController,ToastAlertProtocol {
+    var viewModel: UserViewModel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = NSLocalizedString("watheq", comment: "")
-        self.tabBarItem.title = NSLocalizedString("watheq", comment: "")
+        viewModel = UserViewModel()
+        self.checktoRegisterDeviceToken()
+
+        self.title = NSLocalizedString("Prices", comment: "")
+        self.tabBarItem.title = NSLocalizedString("Prices", comment: "")
 
        // AbstractViewController.showMessage(title: "No Internet Connection", body: "", isWindowNeeded: false, BackgroundColor: UIColor.black, foregroundColor: UIColor.white)
 
         // Do any additional setup after loading the view.
     }
+    
+    
+    func checktoRegisterDeviceToken()
+    {
+        if  UserDefaults.standard.string(forKey: "TokenDevice") != nil
+        {
+            let UuidData : String!
+            if let uuidvalue = DAKeychain.shared["uuid"]
+            {
+                UuidData = uuidvalue
+            }
+            else
+            {
+                let uuid = UUID().uuidString
+                DAKeychain.shared["uuid"] = uuid // Store
+                UuidData = uuid
+            }
+            
+            let NotificationData =  NSMutableDictionary()
+            NotificationData.setValue(UserDefaults.standard.string(forKey: "TokenDevice"), forKey: "token")
+            NotificationData.setValue(UuidData, forKey: "identifier")
+            NotificationData.setValue(NSLocale.preferredLanguages[0], forKey: "locale")
+            
+            
+            self.RegisterDeviceToken(ident: UuidData, FBToken: UserDefaults.standard.string(forKey: "TokenDevice")!)
+        }
+    }
+    
+    
+    
+    func RegisterDeviceToken(ident :String , FBToken : String)
+    {
+        viewModel.RegisterDeviceToken(identifier:ident , firebaseToken:FBToken,  completion: { (ResponseDic, errorMsg) in
+            if errorMsg == nil {
+                
+                
+            } else{
+                self.showToastMessage(title:errorMsg! , isBottom:true , isWindowNeeded: true, BackgroundColor: UIColor.redAlert, foregroundColor: UIColor.white)
+            }
+        })
+        
+    }
+    
     override  func viewDidLayoutSubviews() {
        self.customizeTabBarLocal()
         
@@ -39,7 +87,7 @@ class WatheqViewController: AbstractViewController {
        
         let TabBarView = UIApplication.shared.delegate?.window??.rootViewController as! UITabBarController
         let tabBar1 :UITabBarItem  = TabBarView.tabBar.items![0]
-        tabBar1.title = NSLocalizedString("watheq", comment: "")
+        tabBar1.title = NSLocalizedString("Prices", comment: "")
         
         let tabBar2:UITabBarItem = TabBarView.tabBar.items![1]
         tabBar2.title = NSLocalizedString("myOrders", comment: "")

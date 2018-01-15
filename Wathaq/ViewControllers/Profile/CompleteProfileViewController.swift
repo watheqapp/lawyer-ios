@@ -70,7 +70,11 @@ class CompleteProfileViewController: UIViewController,ToastAlertProtocol,UIImage
     
     @IBAction func updateLocation (_ sender :Any)
     {
-        self.setupLocationManager()
+        let MainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
+        let ChooseLocationView = MainStoryBoard.instantiateViewController(withIdentifier: "CurrentLocationViewController") as! CurrentLocationViewController
+        ChooseLocationView.delegate = self as! MoawtheqLocationDelegate
+        self.present(ChooseLocationView, animated: true, completion: nil)
+        
     }
     
     
@@ -316,3 +320,18 @@ extension CompleteProfileViewController : UITextFieldDelegate {
         }
 }
 }
+
+extension CompleteProfileViewController : MoawtheqLocationDelegate {
+    func didChooseLocation(currentLocation: CLLocation) {
+        self.currentLocation = currentLocation
+        getAddress { (address) in
+            self.btnUpdateLocation.setTitle( address , for: .normal)
+            self.btnUpdateLocation.setTitle( address , for: .highlighted)
+            self.btnUpdateLocation.setTitle( address , for: .selected)
+        }
+    }
+    
+    
+
+}
+

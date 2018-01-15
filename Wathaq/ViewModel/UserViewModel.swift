@@ -40,6 +40,17 @@ class UserViewModel: ToastAlertProtocol {
         }
     }
     
+    func RegisterDeviceToken(identifier:String,firebaseToken:String, completion: @escaping (String, String?) -> ()){
+        
+        NetworkHandler.requestTarget(target: .registerDeviceToken(identifier: identifier,firebaseToken:firebaseToken), isDictionary: true) { (result, errorMsg) in
+            if errorMsg == nil {
+                completion("",nil)
+            } else{
+                completion("",errorMsg)
+            }
+        }
+    }
+    
     func completeUserProfile(userName:String,UseEmail:String,UseImage:String,Userlat:Double,Userlong:Double, completion: @escaping (User?, String?) -> ()){
         
         NetworkHandler.requestTarget(target: .completeProfile(name: userName, email: UseEmail, image: UseImage, latitude:Userlat, longitude:Userlong), isDictionary: true) { (result, errorMsg) in

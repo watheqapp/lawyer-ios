@@ -13,7 +13,7 @@
 "Settings" = "Settings";
 "profile" = "Profile";
 "notifications" = "Notifications";
-"watheq" = "Watheq";
+"Prices" = "Prices";
 "myOrders" = "My Orders";
 "Cancel" = "Cancel";
 "Change Language" = "Change Language";
@@ -55,3 +55,9 @@
 "liscenceFile" = "Liscence File";
 "Take Picture from" = "Take Picture from";
 "profession Data files uploaded successfully Thank you" = "files uploaded successfully Thank you";
+"pleaseChooseaddressFirst" = "Please choose address";
+"No Orders" = "No Orders";
+"OrderNumber" = "OrderNumber # ";
+"opened" = "Opened";
+"finished" = "Finished";
+
