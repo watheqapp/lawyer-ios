@@ -15,8 +15,8 @@ class OrderViewModel: ToastAlertProtocol {
     func getNewOrders(orderPageNum:Int,completion: @escaping (NewOrderRequestRootClass?, String?) -> ()){
         NetworkHandler.requestTarget(target: .getNewOrders(orderPageNum, 10), isDictionary: true) { (result, errorMsg) in
             if errorMsg == nil {
-                let model = Mapper<NewOrderRequestRootClass>().map(JSONString: result as! String)!
-                let Ordermodel = model.data
+                let model = Mapper<NewOrderRequestRootClass>().map(JSONString: result as! String)
+                let Ordermodel = model?.data
                 completion(model,nil)
             } else{
                 completion(nil,errorMsg)
@@ -32,7 +32,7 @@ class OrderViewModel: ToastAlertProtocol {
     func getPendingOrders(orderPageNum:Int, completion: @escaping (NewOrderRequestRootClass?, String?) -> ()){
         NetworkHandler.requestTarget(target: .getPendingOrders(orderPageNum,10), isDictionary: true) { (result, errorMsg) in
             if errorMsg == nil {
-                let Ordermodel = Mapper<NewOrderRequestRootClass>().map(JSONString: result as! String)!
+                let Ordermodel = Mapper<NewOrderRequestRootClass>().map(JSONString: result as! String)
                 completion(Ordermodel,nil)
                 
             } else{
@@ -45,7 +45,7 @@ class OrderViewModel: ToastAlertProtocol {
     func getClosedOrders(orderPageNum:Int, completion: @escaping (NewOrderRequestRootClass?, String?) -> ()){
         NetworkHandler.requestTarget(target: .getClosedOrders(orderPageNum,10), isDictionary: true) { (result, errorMsg) in
             if errorMsg == nil {
-                let Ordermodel = Mapper<NewOrderRequestRootClass>().map(JSONString: result as! String)!
+                let Ordermodel = Mapper<NewOrderRequestRootClass>().map(JSONString: result as! String)
                 completion(Ordermodel,nil)
                 
             } else{

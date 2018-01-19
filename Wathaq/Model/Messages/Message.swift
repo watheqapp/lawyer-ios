@@ -41,9 +41,7 @@ class Message {
         
         let userObj:User? = UserDefaults.standard.rm_customObject(forKey: Constants.keys.KeyUser) as? User
         if let currentUserID = userObj?.userID{
-            Database.database().reference().child("messages").child("\(currentUserID as! Int)").child("\(toID )\(currentUserID as! Int)\(orderId)").observe(.value, with: { (snapshot) in
-                if snapshot.exists() {
-                   // let data = snapshot.value as! [String: String]
+         
                     Database.database().reference().child("messages").child("\(currentUserID as! Int)").child("\(toID )\(currentUserID as! Int)\(orderId)").observe(.childAdded, with: { (snap) in
                         if snap.exists() {
                             let receivedMessage = snap.value as! [String: Any]
@@ -59,8 +57,6 @@ class Message {
                         }
                     })
                 }
-            })
-        }
     }
 //
 
@@ -173,6 +169,10 @@ class Message {
             
             Database.database().reference().child("messages").child(toID).child("\(toID )\(currentUserID as! Int)\(orderId)").childByAutoId().setValue(withValues, withCompletionBlock: { (error, reference) in
 
+            })
+            
+            Database.database().reference().child("notifications").child("messages").childByAutoId().setValue(withValues, withCompletionBlock: { (error, reference) in
+                
             })
         }
     }

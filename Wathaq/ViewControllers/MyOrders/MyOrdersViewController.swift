@@ -40,11 +40,6 @@ class MyOrdersViewController: UIViewController,ToastAlertProtocol {
     @IBOutlet weak var tbl_Orders: UITableView!
 
 
-
-
-
-
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -466,10 +461,4 @@ extension MyOrdersViewController:DZNEmptyDataSetDelegate
         }    }
 }
 
-extension UIColor {
-    func brightened(by factor: CGFloat) -> UIColor {
-        var h: CGFloat = 0, s: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 0
-        getHue(&h, saturation: &s, brightness: &b, alpha: &a)
-        return UIColor(hue: h, saturation: s, brightness: b * factor, alpha: a)
-    }
-}
+

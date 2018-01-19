@@ -9,6 +9,7 @@
 import UIKit
 import TransitionButton
 import CoreLocation
+import Firebase
 
 
 class CompleteProfileViewController: UIViewController,ToastAlertProtocol,UIImagePickerControllerDelegate, UINavigationControllerDelegate,CLLocationManagerDelegate {
@@ -257,6 +258,14 @@ class CompleteProfileViewController: UIViewController,ToastAlertProtocol,UIImage
 
                     self.ConfirmButton.stopAnimation()
                     self.view.isUserInteractionEnabled = true
+                    
+                    let values = ["displayName": userObj?.name, "email": userObj?.email, "instanceId": userObj?.token!, "uid" :"\(userObj!.userID as! Int)"]
+                    Database.database().reference().child("users").child("\(userObj!.userID as! Int)").updateChildValues(values, withCompletionBlock: { (errr, _) in
+                        if errr == nil {
+                            
+                        }
+                    })
+
                     
                       self.showToastMessage(title:NSLocalizedString("Profile Data Completed Thank you", comment: "") , isBottom:true , isWindowNeeded: true, BackgroundColor: UIColor.greenAlert, foregroundColor: UIColor.white)
                     
