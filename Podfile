@@ -31,7 +31,8 @@ pod 'Alamofire', '~> 4.3'   # network helper
   pod 'Firebase/Storage'
   pod 'Firebase/Database'
   pod 'Firebase/RemoteConfig'
-
+  pod "PullToRefreshKit"
+  pod "ESPullToRefresh"
 
 
 end

@@ -22,7 +22,7 @@ class Client : NSObject, NSCoding, Mappable{
 		return Client()
 	}
 	required init?(map: Map){}
-	private override init(){}
+	public override init(){}
 
 	func mapping(map: Map)
 	{

@@ -1,130 +1,116 @@
 //
-//  ProfileViewController.swift
-//  Wathaq
+//  AcceptsOrderViewController.swift
+//  WathaqLawyer
 //
-//  Created by Ahmed Zaky on 11/12/17.
-//  Copyright © 2017 Ahmed Zaky. All rights reserved.
+//  Created by Ahmed Zaky on 1/19/18.
+//  Copyright © 2018 Ahmed Zaky. All rights reserved.
 //
 
 import UIKit
-import SwifterSwift
-import Kingfisher
 import DZNEmptyDataSet
-import ESPullToRefresh
+import TransitionButton
 
-
-class ProfileViewController: UIViewController,ToastAlertProtocol {
-    @IBOutlet weak var tbl_Orders: UITableView!
-     var ClosedPageNum : Int!
-    var IsClosedOrderDataFirstLoading : Bool!
-    var ArrClosedOrdersCat :[Orderdata]!
+class AcceptsOrderViewController: UIViewController,ToastAlertProtocol {
+    
+    @IBOutlet weak var tbl_orderDetails: UITableView!
+    @IBOutlet weak var btnAccepts: TransitionButton!
+    @IBOutlet weak var btnCancel: UIButton!
+    @IBOutlet weak var lbl_Price: UILabel!
+    @IBOutlet weak var lbl_PriceTitle: UILabel!
+    
+    var RequestedOrder : Orderdata!
+    var ArrToDraw :NSMutableArray!
+    var Orderid : String!
+    var Clientid : String!
+    var viewModel: OrderViewModel!
     var ErrorStr : String!
 
-    var viewModel: UserViewModel!
-    var OrderModel: OrderViewModel!
-    var StopLoadMore = false
 
-    
-    
+    var IsFirstLoading : Bool!
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel = UserViewModel()
-        OrderModel = OrderViewModel()
-        ArrClosedOrdersCat = [Orderdata]()
-        IsClosedOrderDataFirstLoading = true
-        self.addInfiniteScrolling()
-        ClosedPageNum = 1
-        self.getClosedOrdersWithPageNum(ClosedPageNum)
-
+        IsFirstLoading = true
         self.ErrorStr = ""
+        viewModel = OrderViewModel()
 
-        self.title = NSLocalizedString("profile", comment: "")
-        if #available(iOS 11.0, *) {
-            self.navigationController?.navigationBar.prefersLargeTitles = true
-            let attributes = [
-                NSAttributedStringKey.foregroundColor : UIColor.deepBlue,
-                NSAttributedStringKey.font :  UIFont(name: Constants.FONTS.FONT_PARALLAX_AR, size: 30)
-            ]
-            
-            navigationController?.navigationBar.largeTitleTextAttributes = attributes
-        }
+        self.getOrdersDetailsWithOrderId(Orderid)
 
+
+        // Do any additional setup after loading the view.
     }
     
-    func addInfiniteScrolling(){
-        self.tbl_Orders.es.addInfiniteScrolling {
-            [unowned self] in
-            if self.StopLoadMore == false
-            {
-                self.ClosedPageNum = self.ClosedPageNum + 1
-                self.getClosedOrdersWithPageNum(self.ClosedPageNum)
-            }
-            else
-            {
-                self.tbl_Orders.es.removeRefreshFooter()
-
-            }
-        }
-    }
-    
-    func getClosedOrdersWithPageNum (_ PageNum : Int)
+    func adjustOrderDataToDrawWithOrderObj (_ OrderObj : Orderdata)
     {
-        OrderModel.getClosedOrders(orderPageNum: PageNum, completion: { (OrderObj, errorMsg) in
+        lbl_Price.text = "\(OrderObj.cost as! Int)"
+        btnAccepts.setTitle(NSLocalizedString("Confirm", comment: ""), for: .normal)
+        btnCancel.setTitle(NSLocalizedString("Cancel", comment: ""), for: .normal)
+        lbl_PriceTitle.text = NSLocalizedString("Price Coast", comment: "")
+        ArrToDraw = NSMutableArray()
+        
+        let DicOrderType = NSMutableDictionary()
+        DicOrderType.setValue(OrderObj.category?.name, forKey: "value")
+        DicOrderType.setValue("OrderCategory", forKey:"title" )
+
+        ArrToDraw.add(DicOrderType)
+        
+        let DicmoawklName = NSMutableDictionary()
+        DicmoawklName.setValue(OrderObj.client?.name, forKey: "value")
+        DicmoawklName.setValue("Name", forKey: "title")
+
+        ArrToDraw.add(DicmoawklName)
+        
+        let deliveryLocation = NSMutableDictionary()
+        deliveryLocation.setValue(OrderObj.delivery, forKey: "value")
+        deliveryLocation.setValue("delivery", forKey:"title" )
+
+        ArrToDraw.add(deliveryLocation)
+        
+        self.tbl_orderDetails.reloadData()
+
+
+    }
+    
+    func getOrdersDetailsWithOrderId (_ orderId : String)
+    {
+        viewModel.getOrderDetails(orderId: orderId, completion: { (OrderObj, errorMsg) in
             if errorMsg == nil {
                 self.ErrorStr = ""
-                
-                self.IsClosedOrderDataFirstLoading = false
-                
-                
-                if self.ClosedPageNum == 1
-                {
-                    self.ArrClosedOrdersCat = OrderObj?.data
-                    if self.ArrClosedOrdersCat == nil
-                    {
-                        self.ArrClosedOrdersCat = [Orderdata]()
-                    }
-                }
-                else
-                {
-                    if let  ArrMoreClosedRequests = OrderObj?.data
-                    {
-                        self.ArrClosedOrdersCat = self.ArrClosedOrdersCat + ArrMoreClosedRequests
-                    }
-                    else
-                    {
-                        self.tbl_Orders.es.stopLoadingMore()
-                        self.StopLoadMore = true
-
-                    }
-                }
-                
-                self.tbl_Orders.reloadData()
-                self.tbl_Orders.es.stopLoadingMore()
-                
+                self.IsFirstLoading = false
+                self.RequestedOrder = OrderObj!
+                self.adjustOrderDataToDrawWithOrderObj(self.RequestedOrder)
                 
             } else{
                 self.ErrorStr = errorMsg
-                self.IsClosedOrderDataFirstLoading = false
-                self.tbl_Orders.reloadData()
-                self.tbl_Orders.es.stopLoadingMore()
+                self.IsFirstLoading = false
+                self.tbl_orderDetails.reloadData()
                 
                 self.showToastMessage(title:errorMsg! , isBottom:true , isWindowNeeded: true, BackgroundColor: UIColor.redAlert, foregroundColor: UIColor.white)
             }
         })
     }
-
     
-    override  func viewDidLayoutSubviews() {
-       
+    func AcceptOrdersWithOrderId (_ orderId : String)
+    {
+        btnAccepts.startAnimation()
+        viewModel.AcceptOrder(orderId: orderId, completion: { (OrderObj, errorMsg) in
+            if errorMsg == nil {
+                self.ErrorStr = ""
+                
+                self.CancelOrder(AnyClass.self)
+                
+                self.showToastMessage(title:NSLocalizedString("OrderAccepted", comment: "") , isBottom:true , isWindowNeeded: true, BackgroundColor: UIColor.greenAlert, foregroundColor: UIColor.white)
+
+                
+            } else{
+                self.ErrorStr = errorMsg
+                self.IsFirstLoading = false
+                self.tbl_orderDetails.reloadData()
+                
+                self.showToastMessage(title:errorMsg! , isBottom:true , isWindowNeeded: true, BackgroundColor: UIColor.redAlert, foregroundColor: UIColor.white)
+            }
+        })
     }
-    
-
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-    }
-    
-
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -132,6 +118,16 @@ class ProfileViewController: UIViewController,ToastAlertProtocol {
     }
     
 
+    @IBAction func AcceptOrder(_ sender :Any)
+    {
+        self.AcceptOrdersWithOrderId(Orderid)
+    }
+    
+    @IBAction func CancelOrder(_ sender :Any)
+    {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -143,34 +139,33 @@ class ProfileViewController: UIViewController,ToastAlertProtocol {
     */
 
 }
-
-extension ProfileViewController: UITableViewDataSource {
+extension AcceptsOrderViewController: UITableViewDataSource {
     // table view data source methods
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        if IsClosedOrderDataFirstLoading == true
+        
+        if IsFirstLoading == true
         {
             return 5
         }
         else
         {
-            return  ArrClosedOrdersCat.count
+            return ArrToDraw.count
         }
         
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        if IsClosedOrderDataFirstLoading == true
+        
+        
+        if IsFirstLoading == true
         {
-            let cellLoader:MyOrderPlaceHolderTableViewCell = tableView.dequeueReusableCell(withIdentifier:"MyOrderPlaceHolderTableViewCell") as UITableViewCell! as! MyOrderPlaceHolderTableViewCell
+            let cellLoader:PricePlaceHolderTableViewCell = tableView.dequeueReusableCell(withIdentifier:"PricePlaceHolderTableViewCell") as UITableViewCell! as! PricePlaceHolderTableViewCell
             
             cellLoader.gradientLayers.forEach { gradientLayer in
-                let baseColor = cellLoader.lblLawerName.backgroundColor!
+                let baseColor = cellLoader.lblServiceName.backgroundColor!
                 gradientLayer.colors = [baseColor.cgColor,
                                         baseColor.brightened(by: 0.93).cgColor,
                                         baseColor.cgColor]
@@ -181,73 +176,38 @@ extension ProfileViewController: UITableViewDataSource {
         }
         else
         {
+          
+            let cellpriceCell:PriceTableViewCell = tableView.dequeueReusableCell(withIdentifier:"PriceTableViewCell") as UITableViewCell! as! PriceTableViewCell
             
-            let cellOrderCell:MyOrderTableViewCell = tableView.dequeueReusableCell(withIdentifier:"MyOrderTableViewCell") as UITableViewCell! as! MyOrderTableViewCell
+            let DicOrderType = ArrToDraw.object(at: indexPath.row) as! NSDictionary
             
-            let ObjOrder =  self.ArrClosedOrdersCat[indexPath.row]
-            
-            cellOrderCell.lblLawerName.text = ObjOrder.lawyer?.name
-            cellOrderCell.lblOrderStatus.text = ObjOrder.status
-            cellOrderCell.lblServiceNum.text = "\(NSLocalizedString("OrderNumber", comment: "") as String) \(ObjOrder.id as! Int)"
-            
-            let date = Date(unixTimestamp: Double(ObjOrder.createdAt!))
-            
-            cellOrderCell.LblOrderTime.text = date.dateString()
-            
-            if let url = ObjOrder.lawyer?.image
-            {
-                let imgUrl =  URL(string: Constants.ApiConstants.BaseUrl+url)
-                cellOrderCell.imgLawyer.kf.setImage(with:imgUrl, placeholder: UIImage.init(named: "avatar2"), options: nil, progressBlock: nil, completionHandler: nil)
-            }
-            else
-            {
-                cellOrderCell.imgLawyer.kf.setImage(with: nil, placeholder: UIImage.init(named: "avatar2"), options: nil, progressBlock: nil, completionHandler: nil)
-            }
-            
-            return cellOrderCell
-            
+            cellpriceCell.lbl_ServiceCoast.text = DicOrderType.value(forKey: "value") as! String
+            cellpriceCell.lbl_serviceName.text = NSLocalizedString(DicOrderType.value(forKey: "title") as! String, comment: "")
+
+            return cellpriceCell
         }
+        
+        
     }
     
 }
 
-extension ProfileViewController: UITableViewDelegate {
-    
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
-    {
-            return 300
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?
-    {
-        let cellHeader:ProfileHeaderTableViewCell = tableView.dequeueReusableCell(withIdentifier:"ProfileHeaderTableViewCell") as UITableViewCell! as! ProfileHeaderTableViewCell
-        viewModel = UserViewModel()
-        let UserModel = viewModel.getUser()
-        if let name = UserModel?.name
-        {
-            cellHeader.lblUserName.text = name
-        }
-        if let url = UserModel?.image
-        {
-            let imgUrl =  URL(string: Constants.ApiConstants.BaseUrl+url)
-            cellHeader.imgUserImg.kf.setImage(with:imgUrl, placeholder: UIImage.init(named: "avatar2"), options: nil, progressBlock: nil, completionHandler: nil)
-        }
-        else
-        {
-            cellHeader.imgUserImg.kf.setImage(with: nil, placeholder: UIImage.init(named: "avatar2"), options: nil, progressBlock: nil, completionHandler: nil)
-        }
-        
-        return cellHeader
-    }
+extension AcceptsOrderViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
-        return 160
+        return 70
+    }
+    
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        
     }
 }
 
-extension ProfileViewController:DZNEmptyDataSetSource
+extension AcceptsOrderViewController:DZNEmptyDataSetSource
 {
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
         
@@ -338,17 +298,9 @@ extension ProfileViewController:DZNEmptyDataSetSource
         return UIColor.clear
     }
     
-    func verticalOffset(forEmptyDataSet scrollView: UIScrollView!) -> CGFloat {
-        
-        return 150
-        
-    }
-    
-
-    
 }
 
-extension ProfileViewController:DZNEmptyDataSetDelegate
+extension AcceptsOrderViewController:DZNEmptyDataSetDelegate
 {
     func emptyDataSetShouldDisplay(_ scrollView: UIScrollView!) -> Bool
     {
@@ -365,9 +317,8 @@ extension ProfileViewController:DZNEmptyDataSetDelegate
     }
     func emptyDataSet(_ scrollView: UIScrollView!, didTap view: UIView!)
     {
-            ClosedPageNum = 1
-            self.getClosedOrdersWithPageNum(ClosedPageNum)
+    self.getOrdersDetailsWithOrderId(Orderid)
     }
-    
 }
+
 

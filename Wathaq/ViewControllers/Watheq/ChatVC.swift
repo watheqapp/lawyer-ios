@@ -25,12 +25,18 @@ import UIKit
 import Photos
 import Firebase
 import CoreLocation
+import TransitionButton
+import DZNEmptyDataSet
 
-class ChatVC: UIViewController, UITextFieldDelegate,UITableViewDelegate,UITableViewDataSource,  UINavigationControllerDelegate, UIImagePickerControllerDelegate, CLLocationManagerDelegate {
+class ChatVC: UIViewController, UITextFieldDelegate,UITableViewDelegate,UITableViewDataSource,  UINavigationControllerDelegate, UIImagePickerControllerDelegate, CLLocationManagerDelegate,ToastAlertProtocol {
     
     //MARK: Properties
     var OrderObj : Orderdata!
     var ClientObj : Client!
+    var viewModel: OrderViewModel!
+    @IBOutlet weak var btncloseOrder: TransitionButton!
+
+
     @IBOutlet var inputBar: UIView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var inputTextField: UITextField!
@@ -54,6 +60,17 @@ class ChatVC: UIViewController, UITextFieldDelegate,UITableViewDelegate,UITableV
     var currentUser: User?
     var canSendLocation = true
     
+    
+    func checkOrderStatus()
+    {
+        if OrderObj.status == "Closed"
+        {
+            self.inputTextField.isEnabled = false
+            btncloseOrder.setTitle(NSLocalizedString("OrderClosed", comment: ""), for: .normal)
+
+        }
+    }
+    
     //MARK: Methods
     func customization() {
         self.imagePicker.delegate = self
@@ -62,6 +79,7 @@ class ChatVC: UIViewController, UITextFieldDelegate,UITableViewDelegate,UITableV
         self.tableView.contentInset.bottom = self.barHeight
         self.tableView.scrollIndicatorInsets.bottom = self.barHeight
         self.locationManager.delegate = self
+        btncloseOrder.setTitle(NSLocalizedString("closeOrderTitle", comment: ""), for: .normal)
         if custmoizeBackButton == true
         {
             self.navigationItem.setHidesBackButton(true, animated: false)
@@ -86,6 +104,37 @@ class ChatVC: UIViewController, UITextFieldDelegate,UITableViewDelegate,UITableV
         }
     }
     
+    @IBAction func closeOrderAction (_ sender:Any)
+    {
+        let actionSheetController: UIAlertController = UIAlertController(title: "", message: NSLocalizedString("closeOrder",comment:""), preferredStyle: .actionSheet)
+        let cancelButton = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel) { _ in
+        }
+        actionSheetController.addAction(cancelButton)
+        
+        let ConfirmButton = UIAlertAction(title: NSLocalizedString("Confirm", comment: ""), style: .default) { _ in
+            self.CloseOrdersWithOrderId("\(self.OrderObj.id as! Int)")
+        }
+        actionSheetController.addAction(ConfirmButton)
+        
+        
+        self.present(actionSheetController, animated: true, completion: nil)
+    }
+    
+    
+    func CloseOrdersWithOrderId (_ orderId : String)
+    {
+        viewModel.CloseOrder(orderId: orderId, completion: { (OrderObj, errorMsg) in
+            if errorMsg == nil {
+             self.showToastMessage(title:NSLocalizedString("OrderClosed", comment: "") , isBottom:false , isWindowNeeded: true, BackgroundColor: UIColor.greenAlert, foregroundColor: UIColor.white)
+                self.inputTextField.isEnabled = false
+                self.btncloseOrder.setTitle(NSLocalizedString("OrderClosed", comment: ""), for: .normal)
+
+                
+            } else{
+            self.showToastMessage(title:errorMsg! , isBottom:false , isWindowNeeded: true, BackgroundColor: UIColor.redAlert, foregroundColor: UIColor.white)
+            }
+        })
+    }
     
     //Hides current viewcontroller
     @objc func dismissSelf() {
@@ -251,8 +300,73 @@ class ChatVC: UIViewController, UITextFieldDelegate,UITableViewDelegate,UITableV
         self.customization()
         self.fetchData()
         self.configureTitleView()
+        self.checkOrderStatus()
+
+        viewModel = OrderViewModel()
+        
+
     }
 }
 
+extension ChatVC:DZNEmptyDataSetSource
+{
+    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        
+        let myMutableString = NSMutableAttributedString()
+        
+       
+            var myMutableString1 = NSMutableAttributedString()
+            
+            myMutableString1 = NSMutableAttributedString(string: NSLocalizedString("No messages", comment: ""))
+            myMutableString1.setAttributes([NSAttributedStringKey.font :UIFont(name: Constants.FONTS.FONT_AR, size: 18.0)!
+                , NSAttributedStringKey.foregroundColor : UIColor.deepBlue], range: NSRange(location:0,length:myMutableString1.length)) // What ever range you want to give
+            
+            myMutableString.append(myMutableString1)
+            
+        return myMutableString
+    }
+    
+    func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
+            return UIImage(named:"EmptyData_OrdersEmpty")
+    }
+    
+    func imageAnimation(forEmptyDataSet scrollView: UIScrollView!) -> CAAnimation!
+    {
+        let animation:CABasicAnimation = CABasicAnimation(keyPath: "transform.scale")
+        animation.fromValue = NSValue(caTransform3D:CATransform3DIdentity)
+        animation.toValue = NSValue(caTransform3D:CATransform3DMakeScale(1.1, 1.1, 1.1))
+        animation.duration = 5
+        animation.autoreverses = true
+        animation.repeatCount = MAXFLOAT
+        
+        return animation
+    }
+    
+    
+    func backgroundColor(forEmptyDataSet scrollView: UIScrollView!) -> UIColor! {
+        return UIColor.clear
+    }
+    
+}
+
+extension ChatVC:DZNEmptyDataSetDelegate
+{
+    func emptyDataSetShouldDisplay(_ scrollView: UIScrollView!) -> Bool
+    {
+        return true
+    }
+    func emptyDataSetShouldAllowScroll(_ scrollView: UIScrollView!) -> Bool
+    {
+        return true
+    }
+    
+    func emptyDataSetShouldAnimateImageView(_ scrollView: UIScrollView!) -> Bool
+    {
+        return false
+    }
+    func emptyDataSet(_ scrollView: UIScrollView!, didTap view: UIView!)
+    {
+    }
+}
 
 

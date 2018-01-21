@@ -32,7 +32,7 @@ class Orderdata : NSObject, NSCoding, Mappable{
 		return Orderdata()
 	}
 	required init?(map: Map){}
-	private override init(){}
+	public override init(){}
 
 	func mapping(map: Map)
 	{

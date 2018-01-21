@@ -60,4 +60,14 @@
 "OrderNumber" = "OrderNumber # ";
 "opened" = "Opened";
 "finished" = "Finished";
-
+"OrderAccepted" = "Order Accepted Start Contacting client from orders tab";
+"OrderCategory" = "Order Category";
+"Name" = "Name";
+"delivery" = "delivery";
+"Confirm" = "Confirm";
+"Price Coast" = "Price Coast";
+"OrderClosed" = "Order closed now";
+"closeOrder" = "do you want to close this order";
+"closeOrderTitle" = "close this order";
+"No messages" = "No messages yet";
+"No Notifications" = "No Notifications";

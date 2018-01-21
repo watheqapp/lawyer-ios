@@ -63,6 +63,12 @@ public enum WatheqApi {
     case getNewOrders(Int,Int)
     case getPendingOrders(Int,Int)
     case getClosedOrders(Int,Int)
+    case getOrderDetails (String)
+    case AcceptOrder (String)
+    case CloseOrder (String)
+    case getNotification
+
+
 
 
 }
@@ -93,13 +99,21 @@ extension WatheqApi: TargetType,AccessTokenAuthorizable {
             return "api/auth/lawyer/order/listPendingOrders"
         case .getClosedOrders:
             return "api/auth/lawyer/order/listClosedOrders"
+        case .getOrderDetails:
+            return "api/auth/orderDetails"
+        case .AcceptOrder :
+            return "api/auth/lawyer/order/accept"
+        case .CloseOrder :
+            return "api/auth/lawyer/order/close"
+        case .getNotification :
+            return "api/auth/notification/list"
         }
     }
     public var method: Moya.Method {
         switch self {
         case .login,.completeProfile,.completeFiles,.UpdateProfile,.registerDeviceToken,.logout:
             return .post
-        case .getNewOrders,.getPendingOrders,.getClosedOrders:
+        case .getNewOrders,.getPendingOrders,.getClosedOrders,.getOrderDetails,.AcceptOrder,.CloseOrder,.getNotification:
             return .get
         }
     }
@@ -124,6 +138,14 @@ extension WatheqApi: TargetType,AccessTokenAuthorizable {
             return .requestParameters(parameters: ["page":page , "limit" : limit], encoding: URLEncoding.default)
         case .getClosedOrders(let page, let limit):
             return .requestParameters(parameters: ["page":page , "limit" : limit], encoding: URLEncoding.default)
+        case .getOrderDetails(let orderId):
+            return .requestParameters(parameters: ["orderId":orderId], encoding: URLEncoding.default)
+        case .AcceptOrder(let orderId):
+            return .requestParameters(parameters: ["orderId":orderId], encoding: URLEncoding.default)
+        case .CloseOrder(let orderId):
+            return .requestParameters(parameters: ["orderId":orderId], encoding: URLEncoding.default)
+        case .getNotification:
+            return .requestPlain
         }
     }
     
@@ -131,7 +153,7 @@ extension WatheqApi: TargetType,AccessTokenAuthorizable {
         switch self {
         case .login:
             return .none
-        case .completeProfile,.completeFiles,.UpdateProfile,.registerDeviceToken,.logout,.getNewOrders,.getClosedOrders,.getPendingOrders :
+        case .completeProfile,.completeFiles,.UpdateProfile,.registerDeviceToken,.logout,.getNewOrders,.getClosedOrders,.getPendingOrders,.getOrderDetails,.AcceptOrder,.CloseOrder,.getNotification:
             return .bearer
         }
     }

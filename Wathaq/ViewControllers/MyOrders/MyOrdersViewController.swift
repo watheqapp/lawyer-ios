@@ -11,9 +11,7 @@ import BetterSegmentedControl
 import SwifterSwift
 import Kingfisher
 import DZNEmptyDataSet
-
-
-
+import ESPullToRefresh
 
 
 class MyOrdersViewController: UIViewController,ToastAlertProtocol {
@@ -42,19 +40,14 @@ class MyOrdersViewController: UIViewController,ToastAlertProtocol {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.addInfiniteScrolling()
+
         ArrPendingOrdersCat = [Orderdata]()
         ArrClosedOrdersCat = [Orderdata]()
-        
         IsPendingOrderDataFirstLoading = true
         IsClosedOrderDataFirstLoading = true
-        
         self.ErrorStr = ""
-
-
-        
         isPendingData = true
-        
         viewModel = OrderViewModel()
         if #available(iOS 11.0, *) {
             self.navigationController?.navigationBar.prefersLargeTitles = true
@@ -62,7 +55,6 @@ class MyOrdersViewController: UIViewController,ToastAlertProtocol {
                 NSAttributedStringKey.foregroundColor : UIColor.deepBlue,
                 NSAttributedStringKey.font :  UIFont(name: Constants.FONTS.FONT_PARALLAX_AR, size: 30)
             ]
-            
             navigationController?.navigationBar.largeTitleTextAttributes = attributes
         }
        self.title = NSLocalizedString("myOrders", comment: "")
@@ -70,7 +62,22 @@ class MyOrdersViewController: UIViewController,ToastAlertProtocol {
         PendingPageNum = 1
         ClosedPageNum = 1
         self.getPendingOrdersWithPageNum(PendingPageNum)
-        
+    }
+    
+    func addInfiniteScrolling(){
+        self.tbl_Orders.es.addInfiniteScrolling {
+            [unowned self] in
+            if self.isPendingData == true
+            {
+            self.PendingPageNum = self.PendingPageNum + 1
+            self.getPendingOrdersWithPageNum(self.PendingPageNum)
+            }
+            else
+            {
+                self.ClosedPageNum = self.ClosedPageNum + 1
+                self.getClosedOrdersWithPageNum(self.ClosedPageNum)
+            }
+        }
     }
     
     
@@ -105,21 +112,35 @@ class MyOrdersViewController: UIViewController,ToastAlertProtocol {
             if errorMsg == nil {
                 self.ErrorStr = ""
 
-                self.ArrPendingOrdersCat = OrderObj?.data
                 self.IsPendingOrderDataFirstLoading = false
-                if self.ArrPendingOrdersCat == nil
-                {
-                    self.ArrPendingOrdersCat = [Orderdata]()
+               
+                    if self.PendingPageNum == 1
+                    {
+                    self.ArrPendingOrdersCat = OrderObj?.data
+                        if self.ArrPendingOrdersCat == nil
+                        {
+                            self.ArrPendingOrdersCat = [Orderdata]()
+                        }
+                    }
+                    else
+                    {
+                       if let  ArrMorependingRequests = OrderObj?.data
+                       {
+                        self.ArrPendingOrdersCat = self.ArrPendingOrdersCat + ArrMorependingRequests
+                        }
+                    }
 
-                }
                 
                 self.tbl_Orders.reloadData()
+                self.tbl_Orders.es.stopLoadingMore()
+
 
                 
             } else{
                 self.ErrorStr = errorMsg
                 self.IsPendingOrderDataFirstLoading = false
                 self.tbl_Orders.reloadData()
+                self.tbl_Orders.es.stopLoadingMore()
 
                 self.showToastMessage(title:errorMsg! , isBottom:true , isWindowNeeded: true, BackgroundColor: UIColor.redAlert, foregroundColor: UIColor.white)
             }
@@ -132,20 +153,34 @@ class MyOrdersViewController: UIViewController,ToastAlertProtocol {
             if errorMsg == nil {
                 self.ErrorStr = ""
 
-                self.ArrClosedOrdersCat = OrderObj?.data
                 self.IsClosedOrderDataFirstLoading = false
-                if self.ArrClosedOrdersCat == nil
-                {
-                    self.ArrClosedOrdersCat = [Orderdata]()
+              
                     
-                }
+                    if self.ClosedPageNum == 1
+                    {
+                        self.ArrClosedOrdersCat = OrderObj?.data
+                        if self.ArrClosedOrdersCat == nil
+                        {
+                            self.ArrClosedOrdersCat = [Orderdata]()
+                        }
+                    }
+                    else
+                    {
+                       if let  ArrMoreClosedRequests = OrderObj?.data
+                       {
+                        self.ArrClosedOrdersCat = self.ArrClosedOrdersCat + ArrMoreClosedRequests
+                        }
+                    }
+                    
                 self.tbl_Orders.reloadData()
+                 self.tbl_Orders.es.stopLoadingMore()
 
                 
             } else{
                 self.ErrorStr = errorMsg
                 self.IsClosedOrderDataFirstLoading = false
                 self.tbl_Orders.reloadData()
+                self.tbl_Orders.es.stopLoadingMore()
 
                 self.showToastMessage(title:errorMsg! , isBottom:true , isWindowNeeded: true, BackgroundColor: UIColor.redAlert, foregroundColor: UIColor.white)
             }
@@ -330,7 +365,7 @@ extension MyOrdersViewController: UITableViewDelegate {
         else
         {
             let ObjOrder =  self.ArrClosedOrdersCat[indexPath.row]
-            // self.performSegue(withIdentifier: "S_Orders_Lawyers", sender: ObjOrder)
+             self.performSegue(withIdentifier: "S_MyOrders_Chat", sender: ObjOrder)
             
         }
     }

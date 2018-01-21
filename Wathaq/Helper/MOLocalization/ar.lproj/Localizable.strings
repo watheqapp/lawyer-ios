@@ -58,3 +58,14 @@
 "OrderNumber" = "رقم الطلب #";
 "opened" = "مفتوحة";
 "finished" = "منتهية";
+"OrderAccepted" = "تم قبول الطلب .يمكنك التواصل مع العميل الان من خلال مراجعه الطلبات";
+"OrderCategory" = "نوع الطلب";
+"Name" = "الاسم";
+"delivery" = "مكان الطلب";
+"Confirm" = "تاكيد";
+"Price Coast" = "سعر الخدمة";
+"OrderClosed" = "تم اغلاق الطلب";
+"closeOrder" = "هل تريد اغلاق هذا الطلب";
+"closeOrderTitle" = "اغلاق هذا الطلب";
+"No messages" = "لايوجد رسائل لهذاالطلب";
+"No Notifications" = "لايوجد تنبيهات";

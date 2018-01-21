@@ -72,8 +72,6 @@ class WatheqViewController: AbstractViewController,ToastAlertProtocol {
         }
     }
     
-    
-    
     func RegisterDeviceToken(ident :String , FBToken : String)
     {
         let userObj:User? = UserDefaults.standard.rm_customObject(forKey: Constants.keys.KeyUser) as? User

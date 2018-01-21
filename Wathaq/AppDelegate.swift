@@ -44,6 +44,60 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         self.startNetworkListener()
         self.customizeTabBar()
         self.checkifuserLoggedIn()
+        
+        if launchOptions?[UIApplicationLaunchOptionsKey.remoteNotification] != nil
+        {
+            let remoteNotif = launchOptions?[UIApplicationLaunchOptionsKey.remoteNotification] as? NSDictionary
+            
+            print(remoteNotif)
+            if remoteNotif![AnyHashable("type")]! as! String == "NewRequest"
+            {
+                // Print full message.
+                print(remoteNotif)
+                print(remoteNotif![AnyHashable("orderId")]!)
+                print(remoteNotif![AnyHashable("clientId")]!)
+                
+                let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let orderDetailsView  = mainStoryboard.instantiateViewController(withIdentifier: "AcceptsOrderViewController") as! AcceptsOrderViewController
+                orderDetailsView.Clientid = remoteNotif![AnyHashable("clientId")]! as! String
+                orderDetailsView.Orderid = remoteNotif![AnyHashable("orderId")]! as! String
+                
+                if let tabBarController = UIApplication.shared.delegate?.window??.rootViewController as? UITabBarController {
+                    tabBarController.selectedIndex = 0
+                    let currentNavigationController = tabBarController.selectedViewController as! UINavigationController
+                    currentNavigationController.present(orderDetailsView, animated: true, completion: nil)
+                }
+                
+            }
+            else  if remoteNotif![AnyHashable("type")]! as! String == "AssignedRequest"
+            {
+                // Print full message.
+                print(remoteNotif)
+                print(remoteNotif![AnyHashable("orderId")]!)
+                print(remoteNotif![AnyHashable("clientId")]!)
+                
+                var OrderObj = Orderdata()
+                var ClientObj = Client()
+                
+                OrderObj.id = Int(remoteNotif![AnyHashable("orderId")]! as! String)
+                ClientObj.id = Int(remoteNotif![AnyHashable("clientId")]! as! String)
+
+                
+                let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let ChatView  = mainStoryboard.instantiateViewController(withIdentifier: "Chat") as! ChatVC
+                
+                ChatView.OrderObj = OrderObj
+                ChatView.ClientObj = ClientObj
+                
+                if let tabBarController = UIApplication.shared.delegate?.window??.rootViewController as? UITabBarController {
+                    tabBarController.selectedIndex = 0
+                    let currentNavigationController = tabBarController.selectedViewController as! UINavigationController
+                    currentNavigationController.pushViewController(ChatView)
+                }
+                
+            }
+            
+        }
 
         return true
     }
@@ -72,7 +126,75 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         
     }
     
-    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any],
+                     fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        // If you are receiving a notification message while your app is in the background,
+        // this callback will not be fired till the user taps on the notification launching the application.
+        // TODO: Handle data of notification
+        
+        // With swizzling disabled you must let Messaging know about the message, for Analytics
+        // Messaging.messaging().appDidReceiveMessage(userInfo)
+        
+        let firebaseAuth = Auth.auth()
+        
+        if (firebaseAuth.canHandleNotification(userInfo)){
+            print(userInfo)
+            return
+        }
+        
+        
+        if userInfo[AnyHashable("type")]! as! String == "NewRequest"
+        {
+            // Print full message.
+            print(userInfo)
+            print(userInfo[AnyHashable("orderId")]!)
+            print(userInfo[AnyHashable("clientId")]!)
+            
+            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let orderDetailsView  = mainStoryboard.instantiateViewController(withIdentifier: "AcceptsOrderViewController") as! AcceptsOrderViewController
+            orderDetailsView.Clientid = userInfo[AnyHashable("clientId")]! as! String
+            orderDetailsView.Orderid = userInfo[AnyHashable("orderId")]! as! String
+            
+            if let tabBarController = UIApplication.shared.delegate?.window??.rootViewController as? UITabBarController {
+                tabBarController.selectedIndex = 0
+                let currentNavigationController = tabBarController.selectedViewController as! UINavigationController
+                currentNavigationController.present(orderDetailsView, animated: true, completion: nil)
+            }
+
+        }
+        
+        else  if userInfo[AnyHashable("type")]! as! String == "AssignedRequest"
+        {
+            // Print full message.
+            print(userInfo)
+            print(userInfo[AnyHashable("orderId")]!)
+            print(userInfo[AnyHashable("clientId")]!)
+            
+            var OrderObj = Orderdata()
+            var ClientObj = Client()
+            
+            OrderObj.id = Int(userInfo[AnyHashable("orderId")]! as! String)
+            ClientObj.id = Int(userInfo[AnyHashable("clientId")]! as! String)
+            
+            
+            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let ChatView  = mainStoryboard.instantiateViewController(withIdentifier: "Chat") as! ChatVC
+            
+            ChatView.OrderObj = OrderObj
+            ChatView.ClientObj = ClientObj
+            
+            if let tabBarController = UIApplication.shared.delegate?.window??.rootViewController as? UITabBarController {
+                tabBarController.selectedIndex = 0
+                let currentNavigationController = tabBarController.selectedViewController as! UINavigationController
+                currentNavigationController.pushViewController(ChatView)
+            }
+            
+        }
+        
+        
+        completionHandler(UIBackgroundFetchResult.newData)
+    }
+
   
     
     func messaging(_ messaging: Messaging, didRefreshRegistrationToken fcmToken: String) {
@@ -169,15 +291,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         Localizer.DoTheExchange()
     }
     
-    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        let firebaseAuth = Auth.auth()
-        
-        if (firebaseAuth.canHandleNotification(userInfo)){
-            print(userInfo)
-            return
-        }
-    }
-
+  
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
