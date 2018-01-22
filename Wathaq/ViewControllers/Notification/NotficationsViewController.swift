@@ -22,6 +22,11 @@ class NotficationsViewController: UIViewController,ToastAlertProtocol {
         super.viewDidLoad()
         viewModel = NotificationViewModel()
         IsDataFirstLoading = true
+        ArrNotification = [NotificationData]()
+        self.ErrorStr = ""
+        tbl_Notification.rowHeight = UITableViewAutomaticDimension
+
+
         self.getNotifications()
 
         if #available(iOS 11.0, *) {
@@ -40,7 +45,12 @@ class NotficationsViewController: UIViewController,ToastAlertProtocol {
     {
         viewModel.GetNotification { (NotificationData, errorMsg) in
              if errorMsg == nil {
-                self.ArrNotification = NotificationData?.notificationData
+                
+                if let arrData = NotificationData?.notificationData
+                {
+                    self.ArrNotification = arrData
+
+                }
                 self.IsDataFirstLoading = false
 
                 self.tbl_Notification.reloadData()
@@ -102,8 +112,19 @@ extension NotficationsViewController: UITableViewDataSource {
             let cellOrderCell:MyOrderTableViewCell = tableView.dequeueReusableCell(withIdentifier:"MyOrderTableViewCell") as UITableViewCell! as! MyOrderTableViewCell
             let ObjNotification =  self.ArrNotification[indexPath.row]
             cellOrderCell.lblServiceNum.text = ObjNotification.content
+          //  cellOrderCell.lblLawerName.text = ObjNotification.content
+            cellOrderCell.lblOrderStatus.text = ObjNotification.type
             let date = Date(unixTimestamp: Double(ObjNotification.createdAt!))
             cellOrderCell.LblOrderTime.text = date.dateString()
+            if Int(Date().daysSince(date))  > 0
+            {
+                cellOrderCell.LblOrderTime.text = "\(Int(Date().daysSince(date))) \(NSLocalizedString("DaysAgo", comment: ""))"
+            }
+            else
+            {
+                cellOrderCell.LblOrderTime.text = "\(Int(Date().hoursSince (date))) \(NSLocalizedString("Hoursago", comment: ""))"
+            }
+            
             return cellOrderCell
 
 
@@ -114,11 +135,7 @@ extension NotficationsViewController: UITableViewDataSource {
 
 extension NotficationsViewController: UITableViewDelegate {
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
-    {
-        return 150
-    }
-    
+
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         

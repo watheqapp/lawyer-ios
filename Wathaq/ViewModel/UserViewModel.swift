@@ -40,6 +40,22 @@ class UserViewModel: ToastAlertProtocol {
         }
     }
     
+    
+    func logoutUser(identifier:String, completion: @escaping (User?, String?) -> ()){
+        
+        NetworkHandler.requestTarget(target: .logout(identifier: identifier), isDictionary: true) { (result, errorMsg) in
+            if errorMsg == nil {
+                let model = Mapper<UserRootClass>().map(JSONString: result as! String)!
+                let userModel = model.user
+                completion(userModel,nil)
+            } else{
+                completion(nil,errorMsg)
+            }
+        }
+    }
+    
+    
+    
     func RegisterDeviceToken(identifier:String,firebaseToken:String, completion: @escaping (String, String?) -> ()){
         
         NetworkHandler.requestTarget(target: .registerDeviceToken(identifier: identifier,firebaseToken:firebaseToken), isDictionary: true) { (result, errorMsg) in

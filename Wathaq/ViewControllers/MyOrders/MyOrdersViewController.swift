@@ -31,7 +31,10 @@ class MyOrdersViewController: UIViewController,ToastAlertProtocol {
     
     var isPendingData : Bool!
     var IsClosedData : Bool!
-    
+    var PendingStopLoadMore = false
+    var closedStopLoadMore = false
+
+
     var ErrorStr : String!
 
     
@@ -69,13 +72,33 @@ class MyOrdersViewController: UIViewController,ToastAlertProtocol {
             [unowned self] in
             if self.isPendingData == true
             {
-            self.PendingPageNum = self.PendingPageNum + 1
-            self.getPendingOrdersWithPageNum(self.PendingPageNum)
+                if self.PendingStopLoadMore == false
+                {
+                    self.PendingPageNum = self.PendingPageNum + 1
+                    self.getPendingOrdersWithPageNum(self.PendingPageNum)
+                }
+                else
+                {
+                    self.tbl_Orders.es.removeRefreshFooter()
+                    
+                }
+         
             }
             else
             {
-                self.ClosedPageNum = self.ClosedPageNum + 1
-                self.getClosedOrdersWithPageNum(self.ClosedPageNum)
+                
+                if self.closedStopLoadMore == false
+                {
+                    self.ClosedPageNum = self.ClosedPageNum + 1
+                    self.getClosedOrdersWithPageNum(self.ClosedPageNum)
+                }
+                else
+                {
+                    self.tbl_Orders.es.removeRefreshFooter()
+                    
+                }
+                
+             
             }
         }
     }
@@ -128,6 +151,11 @@ class MyOrdersViewController: UIViewController,ToastAlertProtocol {
                        {
                         self.ArrPendingOrdersCat = self.ArrPendingOrdersCat + ArrMorependingRequests
                         }
+                        else
+                       {
+                        self.tbl_Orders.es.stopLoadingMore()
+                        self.PendingStopLoadMore = true
+                        }
                     }
 
                 
@@ -169,6 +197,11 @@ class MyOrdersViewController: UIViewController,ToastAlertProtocol {
                        if let  ArrMoreClosedRequests = OrderObj?.data
                        {
                         self.ArrClosedOrdersCat = self.ArrClosedOrdersCat + ArrMoreClosedRequests
+                        }
+                       else
+                       {
+                        self.tbl_Orders.es.stopLoadingMore()
+                        self.closedStopLoadMore = true
                         }
                     }
                     
@@ -276,13 +309,22 @@ extension MyOrdersViewController: UITableViewDataSource {
                 let ObjOrder =  self.ArrPendingOrdersCat[indexPath.row]
 
                 cellOrderCell.lblLawerName.text = ObjOrder.lawyer?.name
-                cellOrderCell.lblOrderStatus.text = ObjOrder.status
+                cellOrderCell.lblOrderStatus.text = ObjOrder.category?.name
                 cellOrderCell.lblServiceNum.text = "\(NSLocalizedString("OrderNumber", comment: "") as String) \(ObjOrder.id as! Int)"
                 
                 let date = Date(unixTimestamp: Double(ObjOrder.createdAt!))
                 
-                cellOrderCell.LblOrderTime.text = date.dateString()
-                
+                if Int(Date().daysSince(date)) == 0
+                {
+                    
+                    cellOrderCell.LblOrderTime.text = "\(Int(Date().hoursSince (date))) \(NSLocalizedString("Hoursago", comment: ""))"
+                    
+                }
+                else
+                {
+                    cellOrderCell.LblOrderTime.text = "\(Int(Date().daysSince(date))) \(NSLocalizedString("DaysAgo", comment: ""))"
+                    
+                }
                 if let url = ObjOrder.lawyer?.image
                 {
                     let imgUrl =  URL(string: Constants.ApiConstants.BaseUrl+url)
@@ -319,13 +361,22 @@ extension MyOrdersViewController: UITableViewDataSource {
             let ObjOrder =  self.ArrClosedOrdersCat[indexPath.row]
 
             cellOrderCell.lblLawerName.text = ObjOrder.lawyer?.name
-            cellOrderCell.lblOrderStatus.text = ObjOrder.status
+            cellOrderCell.lblOrderStatus.text = ObjOrder.category?.name
             cellOrderCell.lblServiceNum.text = "\(NSLocalizedString("OrderNumber", comment: "") as String) \(ObjOrder.id as! Int)"
             
             let date = Date(unixTimestamp: Double(ObjOrder.createdAt!))
             
-            cellOrderCell.LblOrderTime.text = date.dateString()
-            
+            if Int(Date().daysSince(date)) == 0
+            {
+                
+                cellOrderCell.LblOrderTime.text = "\(Int(Date().hoursSince (date))) \(NSLocalizedString("Hoursago", comment: ""))"
+                
+            }
+            else
+            {
+                cellOrderCell.LblOrderTime.text = "\(Int(Date().daysSince(date))) \(NSLocalizedString("DaysAgo", comment: ""))"
+
+            }
             if let url = ObjOrder.lawyer?.image
             {
                 let imgUrl =  URL(string: Constants.ApiConstants.BaseUrl+url)

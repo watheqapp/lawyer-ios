@@ -187,13 +187,21 @@ extension ProfileViewController: UITableViewDataSource {
             let ObjOrder =  self.ArrClosedOrdersCat[indexPath.row]
             
             cellOrderCell.lblLawerName.text = ObjOrder.lawyer?.name
-            cellOrderCell.lblOrderStatus.text = ObjOrder.status
+            cellOrderCell.lblOrderStatus.text = ObjOrder.category?.name
             cellOrderCell.lblServiceNum.text = "\(NSLocalizedString("OrderNumber", comment: "") as String) \(ObjOrder.id as! Int)"
             
             let date = Date(unixTimestamp: Double(ObjOrder.createdAt!))
             
-            cellOrderCell.LblOrderTime.text = date.dateString()
-            
+            if Int(Date().daysSince(date))  > 0
+            {
+                cellOrderCell.LblOrderTime.text = "\(Int(Date().daysSince(date))) \(NSLocalizedString("DaysAgo", comment: ""))"
+                
+            }
+            else
+            {
+                cellOrderCell.LblOrderTime.text = "\(Int(Date().hoursSince (date))) \(NSLocalizedString("Hoursago", comment: ""))"
+                
+            }
             if let url = ObjOrder.lawyer?.image
             {
                 let imgUrl =  URL(string: Constants.ApiConstants.BaseUrl+url)
