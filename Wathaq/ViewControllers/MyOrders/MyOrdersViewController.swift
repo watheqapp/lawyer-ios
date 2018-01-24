@@ -79,7 +79,7 @@ class MyOrdersViewController: UIViewController,ToastAlertProtocol {
                 }
                 else
                 {
-                    self.tbl_Orders.es.removeRefreshFooter()
+                    self.tbl_Orders.es.stopLoadingMore()
                     
                 }
          
@@ -94,7 +94,7 @@ class MyOrdersViewController: UIViewController,ToastAlertProtocol {
                 }
                 else
                 {
-                    self.tbl_Orders.es.removeRefreshFooter()
+                    self.tbl_Orders.es.stopLoadingMore()
                     
                 }
                 
@@ -309,7 +309,7 @@ extension MyOrdersViewController: UITableViewDataSource {
                 let ObjOrder =  self.ArrPendingOrdersCat[indexPath.row]
 
                 cellOrderCell.lblLawerName.text = ObjOrder.lawyer?.name
-                cellOrderCell.lblOrderStatus.text = ObjOrder.category?.name
+                cellOrderCell.lblOrderStatus.text = ObjOrder.category?.discription
                 cellOrderCell.lblServiceNum.text = "\(NSLocalizedString("OrderNumber", comment: "") as String) \(ObjOrder.id as! Int)"
                 
                 let date = Date(unixTimestamp: Double(ObjOrder.createdAt!))
@@ -361,7 +361,7 @@ extension MyOrdersViewController: UITableViewDataSource {
             let ObjOrder =  self.ArrClosedOrdersCat[indexPath.row]
 
             cellOrderCell.lblLawerName.text = ObjOrder.lawyer?.name
-            cellOrderCell.lblOrderStatus.text = ObjOrder.category?.name
+            cellOrderCell.lblOrderStatus.text = ObjOrder.category?.discription
             cellOrderCell.lblServiceNum.text = "\(NSLocalizedString("OrderNumber", comment: "") as String) \(ObjOrder.id as! Int)"
             
             let date = Date(unixTimestamp: Double(ObjOrder.createdAt!))
