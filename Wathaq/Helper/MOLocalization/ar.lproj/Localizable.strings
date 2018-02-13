@@ -10,7 +10,7 @@
 
 "Settings" = "الإعدادات";
 "profile" = "ملفي الشخصي";
-"notifications" = "التنبيهات";
+"notifications" = "الإشعارات";
 "Prices" = "الاسعار";
 "myOrders" = "طلباتي";
 "Cancel" = "إلغاء";
@@ -21,7 +21,7 @@
 "VerificationCode" = "رمز التحقق";
 "ResendVerificationCode" = "إعادة إرسال رمز التحقق";
 "areyoulegalized" = "هل أنت موثق ؟";
-"Download the Notaries application from here" = "حمل تطبيق الموثقين من هنا";
+"Download the Notaries application from here" = "حمل تطبيق الموثق من هنا";
 "sendPhoneNumber" = "أرسل رقم الهاتف";
 "close" = "إغلاق";
 "sendVerificationCode" = "إرسال رمز التحقق";
@@ -31,7 +31,7 @@
 "Enter avalid verification number" = "أدخل رقم تحقق صحيح";
 "Your Phone verified successfully" = "تم التحقق من هاتفك بنجاح";
 "Verification Code sent succussfully" = "تم إرسال رمز التحقق بنجاح";
-"SERVER_ERROR" = "حدث خطأ ما، برجاء اعادة المحاولة";
+"SERVER_ERROR" = "حدث خطأ ما، يرجى اعادة المحاولة";
 "FillAllFields" = "يرجى ملء جميع الحقول";
 "EmailisNotValid" = "ادخل بريد الكتروني صحيح";
 "Photo Gallery" = "معرض الصور";
@@ -43,10 +43,10 @@
 "userName" = "اسم المستخدم";
 "UserMail" = "البريد الإلكتروني";
 "Confirm" = "تأكيد";
-"Profile Data Completed Thank you" = "بيانات الملف الشخصي اكتملت شكرا";
+"Profile Data Completed Thank you" = "بيانات الملف الشخصي اكتملت , شكرا";
 "Updatelocation" = "تحديث الموقع";
 "ProveProfession" = "اثبات المهنة";
-"ProveProfessionMsg" = "لضمان خدمتنا المقدمة للناس, نحتاج بعض الوثائق لاثبات مهنتك وخبرتك";
+"ProveProfessionMsg" = "لضمان خدمتنا المقدمة للمستخدمين, نحتاج بعض الوثائق لاثبات مهنتك وخبرتك";
 "Lawyer" = "محامي";
 "SendData" = "إرسال البيانات";
 "idFile" = "صوره الهويه";
@@ -75,3 +75,11 @@
 "Privacy Policy" = "سياسة الخصوصية";
 "Are you sure you want to logout?" = "هل انت متآكد من تسجيل الخروج";
 "LogOut" = "تسجيل خروج";
+"No Categiories" = "لا يوجد تصنيفات";
+"Contact Us" = "اتصل بنا";
+"LetterAddress" = "عنوان الرساله";
+"Lettercontent" = "تفاصيل الرساله";
+"SendData" = "ارسال";
+"Your Request Recieved, you Will Be Contacted Shortly" = "تم استلام رسالتك، سوف نتواصل معك قريبا";
+"Time" = "الوقت المحدد";
+"AwayFromYou" = "يبعد عنك";

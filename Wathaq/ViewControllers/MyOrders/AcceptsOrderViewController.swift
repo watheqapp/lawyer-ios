@@ -9,6 +9,7 @@
 import UIKit
 import DZNEmptyDataSet
 import TransitionButton
+import Kingfisher
 
 class AcceptsOrderViewController: UIViewController,ToastAlertProtocol {
     
@@ -16,6 +17,8 @@ class AcceptsOrderViewController: UIViewController,ToastAlertProtocol {
     @IBOutlet weak var btnAccepts: TransitionButton!
     @IBOutlet weak var btnCancel: UIButton!
     @IBOutlet weak var lbl_Price: UILabel!
+    @IBOutlet weak var img_Map: UIImageView!
+
     @IBOutlet weak var lbl_PriceTitle: UILabel!
     
     var RequestedOrder : Orderdata!
@@ -33,6 +36,7 @@ class AcceptsOrderViewController: UIViewController,ToastAlertProtocol {
         IsFirstLoading = true
         self.ErrorStr = ""
         viewModel = OrderViewModel()
+        self.tbl_orderDetails.rowHeight = UITableViewAutomaticDimension
 
         self.getOrdersDetailsWithOrderId(Orderid)
 
@@ -51,8 +55,9 @@ class AcceptsOrderViewController: UIViewController,ToastAlertProtocol {
         let DicOrderType = NSMutableDictionary()
         DicOrderType.setValue(OrderObj.category?.name, forKey: "value")
         DicOrderType.setValue("OrderCategory", forKey:"title" )
-
         ArrToDraw.add(DicOrderType)
+
+ 
         
         let DicmoawklName = NSMutableDictionary()
         DicmoawklName.setValue(OrderObj.client?.name, forKey: "value")
@@ -66,6 +71,20 @@ class AcceptsOrderViewController: UIViewController,ToastAlertProtocol {
 
         ArrToDraw.add(deliveryLocation)
         
+        let DicTimeType = NSMutableDictionary()
+        DicTimeType.setValue(OrderObj.time, forKey: "value")
+        DicTimeType.setValue(NSLocalizedString("Time", comment: ""), forKey:"title" )
+        ArrToDraw.add(DicTimeType)
+        
+        let DicawayType = NSMutableDictionary()
+        DicawayType.setValue(OrderObj.distance, forKey: "value")
+        DicawayType.setValue(NSLocalizedString("AwayFromYou", comment: ""), forKey:"title" )
+        ArrToDraw.add(DicawayType)
+        
+        let img = "https://maps.googleapis.com/maps/api/staticmap?center=\(OrderObj.clientLat as! Float),\(OrderObj.clientLong as! Float)&zoom=15&size=500x500&maptype=roadmap%20&markers=color:red%7C\(OrderObj.clientLat as! Float),\(OrderObj.clientLong as! Float)&format=png&style=feature:poi%7Celement:labels%7Cvisibility:off"
+       let imgUrl =  URL(string:img)
+        img_Map.kf.setImage(with:imgUrl, placeholder: UIImage.init(named:"" ), options: nil, progressBlock: nil, completionHandler: nil)
+
         self.tbl_orderDetails.reloadData()
 
 
@@ -180,8 +199,14 @@ extension AcceptsOrderViewController: UITableViewDataSource {
             let cellpriceCell:PriceTableViewCell = tableView.dequeueReusableCell(withIdentifier:"PriceTableViewCell") as UITableViewCell! as! PriceTableViewCell
             
             let DicOrderType = ArrToDraw.object(at: indexPath.row) as! NSDictionary
-            
-            cellpriceCell.lbl_ServiceCoast.text = DicOrderType.value(forKey: "value") as! String
+            if let DicValue = DicOrderType.value(forKey: "value")
+            {
+                cellpriceCell.lbl_ServiceCoast.text = DicValue as! String
+            }
+            else
+            {
+                 cellpriceCell.lbl_ServiceCoast.text = " "
+            }
             cellpriceCell.lbl_serviceName.text = NSLocalizedString(DicOrderType.value(forKey: "title") as! String, comment: "")
 
             return cellpriceCell
@@ -196,7 +221,15 @@ extension AcceptsOrderViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
-        return 70
+        if IsFirstLoading == true
+        {
+            return 70
+        }
+        else
+        {
+            return UITableViewAutomaticDimension
+        }
+        
     }
     
     

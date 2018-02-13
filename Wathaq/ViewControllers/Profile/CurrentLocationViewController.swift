@@ -49,6 +49,11 @@ class CurrentLocationViewController: UIViewController,CLLocationManagerDelegate,
         mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         mapView.isMyLocationEnabled = true
         
+        let imagepin = UIImageView.init(image: UIImage.init(named: "LocationPin"))
+        imagepin.sizeToFit()
+        imagepin.center = mapView.center
+        mapView.addSubview(imagepin)
+        
         // Add the map to the view, hide it until we've got a location update.
         view.addSubview(mapView)
         mapView.isHidden = true
@@ -131,13 +136,18 @@ extension CurrentLocationViewController: GMSMapViewDelegate {
 
     func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D){
         print("You tapped at \(coordinate.latitude), \(coordinate.longitude)")
-        mapView.clear() // clearing Pin before adding new
-        let marker = GMSMarker(position: coordinate)
-        marker.map = mapView
-        
-        self.currentLocation? =  CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
+      //  mapView.clear() // clearing Pin before adding new
+//        let marker = GMSMarker(position: coordinate)
+//        marker.map = mapView
+//
+//        self.currentLocation? =  CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
 
-     
+    }
+    
+    func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
+        let latitude = mapView.camera.target.latitude
+        let longitude = mapView.camera.target.longitude
+        self.currentLocation? =  CLLocation(latitude: latitude, longitude: longitude)
 
     }
 

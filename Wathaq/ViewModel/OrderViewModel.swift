@@ -78,5 +78,16 @@ class OrderViewModel: ToastAlertProtocol {
             }
         }
     }
+    
+    func ContactUs(title:String,content:String, completion: @escaping (String, String?) -> ()){
+        
+        NetworkHandler.requestTarget(target: .ContactUs(title: title,content:content), isDictionary: true) { (result, errorMsg) in
+            if errorMsg == nil {
+                completion("",nil)
+            } else{
+                completion("",errorMsg)
+            }
+        }
+    }
 
 }

@@ -20,6 +20,9 @@ class Orderdata : NSObject, NSCoding, Mappable{
 	var cost : Int?
 	var createdAt : Int?
 	var delivery : String?
+    var time : String?
+    var distance : String?
+
 	var id : Int?
 	var isInAcceptLawyerPeriod : Int?
 	var lawyer : MowatheqData?
@@ -45,6 +48,8 @@ class Orderdata : NSObject, NSCoding, Mappable{
 		cost <- map["cost"]
 		createdAt <- map["created_at"]
 		delivery <- map["delivery"]
+        time <- map["time"]
+        distance <- map["distance"]
 		id <- map["id"]
 		isInAcceptLawyerPeriod <- map["isInAcceptLawyerPeriod"]
 		lawyer <- map["lawyer"]
@@ -69,6 +74,8 @@ class Orderdata : NSObject, NSCoding, Mappable{
          cost = aDecoder.decodeObject(forKey: "cost") as? Int
          createdAt = aDecoder.decodeObject(forKey: "created_at") as? Int
          delivery = aDecoder.decodeObject(forKey: "delivery") as? String
+         time = aDecoder.decodeObject(forKey: "time") as? String
+        distance = aDecoder.decodeObject(forKey: "distance") as? String
          id = aDecoder.decodeObject(forKey: "id") as? Int
          isInAcceptLawyerPeriod = aDecoder.decodeObject(forKey: "isInAcceptLawyerPeriod") as? Int
          lawyer = aDecoder.decodeObject(forKey: "lawyer") as? MowatheqData
@@ -111,6 +118,12 @@ class Orderdata : NSObject, NSCoding, Mappable{
 		if delivery != nil{
 			aCoder.encode(delivery, forKey: "delivery")
 		}
+        if time != nil{
+            aCoder.encode(time, forKey: "time")
+        }
+        if distance != nil{
+            aCoder.encode(distance, forKey: "distance")
+        }
 		if id != nil{
 			aCoder.encode(id, forKey: "id")
 		}

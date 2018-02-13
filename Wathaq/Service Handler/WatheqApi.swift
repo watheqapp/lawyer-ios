@@ -67,6 +67,9 @@ public enum WatheqApi {
     case AcceptOrder (String)
     case CloseOrder (String)
     case getNotification
+    case getPrices
+    case ContactUs(title:String, content:String)
+
 
 
 
@@ -107,13 +110,17 @@ extension WatheqApi: TargetType,AccessTokenAuthorizable {
             return "api/auth/lawyer/order/close"
         case .getNotification :
             return "api/auth/notification/list"
+        case .getPrices :
+            return "api/auth/laywer/prices"
+        case .ContactUs :
+            return "api/auth/contactus/create"
         }
     }
     public var method: Moya.Method {
         switch self {
-        case .login,.completeProfile,.completeFiles,.UpdateProfile,.registerDeviceToken,.logout:
+        case .login,.completeProfile,.completeFiles,.UpdateProfile,.registerDeviceToken,.logout,.ContactUs:
             return .post
-        case .getNewOrders,.getPendingOrders,.getClosedOrders,.getOrderDetails,.AcceptOrder,.CloseOrder,.getNotification:
+        case .getNewOrders,.getPendingOrders,.getClosedOrders,.getOrderDetails,.AcceptOrder,.CloseOrder,.getNotification,.getPrices:
             return .get
         }
     }
@@ -146,6 +153,10 @@ extension WatheqApi: TargetType,AccessTokenAuthorizable {
             return .requestParameters(parameters: ["orderId":orderId], encoding: URLEncoding.default)
         case .getNotification:
             return .requestPlain
+        case .getPrices:
+            return .requestPlain
+        case .ContactUs(let title, let content):
+            return .requestParameters(parameters: ["title":title , "content" :content], encoding: JSONEncoding.default)
         }
     }
     
@@ -153,7 +164,7 @@ extension WatheqApi: TargetType,AccessTokenAuthorizable {
         switch self {
         case .login:
             return .none
-        case .completeProfile,.completeFiles,.UpdateProfile,.registerDeviceToken,.logout,.getNewOrders,.getClosedOrders,.getPendingOrders,.getOrderDetails,.AcceptOrder,.CloseOrder,.getNotification:
+        case .completeProfile,.completeFiles,.UpdateProfile,.registerDeviceToken,.logout,.getNewOrders,.getClosedOrders,.getPendingOrders,.getOrderDetails,.AcceptOrder,.CloseOrder,.getNotification,.getPrices,.ContactUs:
             return .bearer
         }
     }
