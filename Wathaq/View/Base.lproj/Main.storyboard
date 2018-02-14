@@ -118,23 +118,22 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="80" translatesAutoresizingMaskIntoConstraints="NO" id="ajU-jm-XLN">
-                                                            <rect key="frame" x="96" y="214.5" width="183.5" height="68"/>
+                                                            <rect key="frame" x="38" y="214.5" width="300" height="68"/>
                                                             <subviews>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="YB0-66-hgV">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="52" height="68"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="300" height="68"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="57" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rxP-9F-Lag">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="52" height="41.5"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="300" height="41.5"/>
                                                                             <accessibility key="accessibilityConfiguration" hint="" identifier="32440960-EA82-4756-B7D8-4CE925257B3F" label=""/>
                                                                             <fontDescription key="fontDescription" name="DinNextRegular" family="DIN Next LT W23" pointSize="25"/>
                                                                             <color key="textColor" red="0.85490196080000003" green="0.12941176469999999" blue="0.21960784310000001" alpha="1" colorSpace="deviceRGB"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="خدمة" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ek1-cj-wFD">
-                                                                            <rect key="frame" x="0.0" y="41.5" width="52" height="26.5"/>
+                                                                            <rect key="frame" x="0.0" y="41.5" width="300" height="26.5"/>
                                                                             <accessibility key="accessibilityConfiguration" hint="" identifier="32440960-EA82-4756-B7D8-4CE925257B3F" label=""/>
                                                                             <constraints>
-                                                                                <constraint firstAttribute="width" constant="51.5" id="ruH-HG-OuW"/>
                                                                                 <constraint firstAttribute="height" constant="26.5" id="zfW-bZ-khI"/>
                                                                             </constraints>
                                                                             <fontDescription key="fontDescription" name="DinNextRegular" family="DIN Next LT W23" pointSize="17.760000000000002"/>
@@ -143,30 +142,10 @@
                                                                         </label>
                                                                     </subviews>
                                                                 </stackView>
-                                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="bFX-b5-F8n">
-                                                                    <rect key="frame" x="132" y="0.0" width="51.5" height="68"/>
-                                                                    <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="57" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JA7-fo-1Tc">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="51.5" height="41.5"/>
-                                                                            <accessibility key="accessibilityConfiguration" hint="" identifier="32440960-EA82-4756-B7D8-4CE925257B3F" label=""/>
-                                                                            <fontDescription key="fontDescription" name="DinNextRegular" family="DIN Next LT W23" pointSize="25"/>
-                                                                            <color key="textColor" red="0.85490196080000003" green="0.12941176469999999" blue="0.21960784310000001" alpha="1" colorSpace="deviceRGB"/>
-                                                                            <nil key="highlightedColor"/>
-                                                                        </label>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="خدمة" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HV4-t5-dXm">
-                                                                            <rect key="frame" x="0.0" y="41.5" width="51.5" height="26.5"/>
-                                                                            <accessibility key="accessibilityConfiguration" hint="" identifier="32440960-EA82-4756-B7D8-4CE925257B3F" label=""/>
-                                                                            <constraints>
-                                                                                <constraint firstAttribute="width" constant="51.5" id="IhE-TE-Afs"/>
-                                                                                <constraint firstAttribute="height" constant="26.5" id="xOJ-ki-Acl"/>
-                                                                            </constraints>
-                                                                            <fontDescription key="fontDescription" name="DinNextRegular" family="DIN Next LT W23" pointSize="17.760000000000002"/>
-                                                                            <color key="textColor" red="0.68627450980000004" green="0.71372549019999998" blue="0.7843137255" alpha="1" colorSpace="deviceRGB"/>
-                                                                            <nil key="highlightedColor"/>
-                                                                        </label>
-                                                                    </subviews>
-                                                                </stackView>
                                                             </subviews>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="300" id="lRa-3u-A9j"/>
+                                                            </constraints>
                                                         </stackView>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vib-cY-a2N">
                                                             <rect key="frame" x="0.0" y="197.5" width="375" height="1"/>
@@ -213,10 +192,8 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="imgUserImg" destination="PcJ-Hj-WFD" id="rio-RM-aEi"/>
-                                            <outlet property="lblNumOfConsultation" destination="rxP-9F-Lag" id="WFZ-hC-C6d"/>
-                                            <outlet property="lblNumOfServices" destination="JA7-fo-1Tc" id="4h7-ES-BPB"/>
-                                            <outlet property="lblTitleNumOfConsultation" destination="Ek1-cj-wFD" id="ghK-tN-YrI"/>
-                                            <outlet property="lblTitleNumOfServices" destination="HV4-t5-dXm" id="Iti-6g-eHV"/>
+                                            <outlet property="lblNumOfServices" destination="rxP-9F-Lag" id="QH3-jr-ztT"/>
+                                            <outlet property="lblTitleNumOfServices" destination="Ek1-cj-wFD" id="B4g-zP-337"/>
                                             <outlet property="lblUserName" destination="AgI-do-gnU" id="T5t-aW-C6g"/>
                                         </connections>
                                     </tableViewCell>
@@ -3033,10 +3010,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aLy-2z-aii">
-                                                    <rect key="frame" x="20" y="11" width="335" height="78"/>
+                                                    <rect key="frame" x="20" y="11" width="315" height="78"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lpE-cK-aqD" customClass="GradientContainerView" customModule="Skeleton">
-                                                            <rect key="frame" x="270" y="35.5" width="50" height="8"/>
+                                                            <rect key="frame" x="250" y="35.5" width="50" height="8"/>
                                                             <color key="backgroundColor" red="0.87450980389999999" green="0.87563550469999996" blue="0.87565046550000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="8" id="Qlj-YT-JhZ"/>

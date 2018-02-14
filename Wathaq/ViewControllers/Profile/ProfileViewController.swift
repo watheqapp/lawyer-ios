@@ -30,6 +30,7 @@ class ProfileViewController: UIViewController,ToastAlertProtocol {
         super.viewDidLoad()
         viewModel = UserViewModel()
         OrderModel = OrderViewModel()
+        self.GetCredit()
         ArrClosedOrdersCat = [Orderdata]()
         IsClosedOrderDataFirstLoading = true
         self.addInfiniteScrolling()
@@ -48,6 +49,20 @@ class ProfileViewController: UIViewController,ToastAlertProtocol {
             
             navigationController?.navigationBar.largeTitleTextAttributes = attributes
         }
+
+    }
+    
+    func GetCredit ()
+    {
+        let userObj:User? = UserDefaults.standard.rm_customObject(forKey: Constants.keys.KeyUser) as? User
+
+        viewModel.loginUser(Phone: "\(userObj?.phone as! Int)", completion: { (userObj, errorMsg) in
+            if errorMsg == nil {
+              self.tbl_Orders.reloadData()
+            } else{
+                self.showToastMessage(title:errorMsg! , isBottom:true , isWindowNeeded: true, BackgroundColor: UIColor.redAlert, foregroundColor: UIColor.white)
+            }
+        })
 
     }
     
@@ -246,6 +261,13 @@ extension ProfileViewController: UITableViewDelegate {
             cellHeader.imgUserImg.kf.setImage(with: nil, placeholder: UIImage.init(named: "avatar2"), options: nil, progressBlock: nil, completionHandler: nil)
         }
         
+        let userObj:User? = UserDefaults.standard.rm_customObject(forKey: Constants.keys.KeyUser) as? User
+
+        if let credit = userObj?.credit
+        {
+            cellHeader.lblNumOfServices.text = "\(credit as! Int)"
+        }
+        cellHeader.lblTitleNumOfServices.text = NSLocalizedString("Credit", comment: "")
         return cellHeader
     }
     

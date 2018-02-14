@@ -11,9 +11,7 @@ import UIKit
 class ProfileHeaderTableViewCell: UITableViewCell {
     @IBOutlet weak var lblUserName: UILabel!
     @IBOutlet weak var lblNumOfServices: UILabel!
-    @IBOutlet weak var lblNumOfConsultation: UILabel!
     @IBOutlet weak var lblTitleNumOfServices: UILabel!
-    @IBOutlet weak var lblTitleNumOfConsultation: UILabel!
     @IBOutlet weak var imgUserImg: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()

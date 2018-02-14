@@ -18,6 +18,8 @@ class User : NSObject, NSCoding, Mappable{
 	var language : String?
 	var name : String?
 	var phone : Int?
+    var credit : Int?
+
 	var token : String?
     
     var active : Bool?
@@ -47,6 +49,7 @@ class User : NSObject, NSCoding, Mappable{
 		language <- map["language"]
 		name <- map["name"]
 		phone <- map["phone"]
+        credit <- map["credit"]
 		token <- map["token"]
         active <- map["active"]
         lawyerType <- map["lawyerType"]
@@ -75,6 +78,7 @@ class User : NSObject, NSCoding, Mappable{
          language = aDecoder.decodeObject(forKey: "language") as? String
          name = aDecoder.decodeObject(forKey: "name") as? String
          phone = aDecoder.decodeObject(forKey: "phone") as? Int
+         credit = aDecoder.decodeObject(forKey: "credit") as? Int
          token = aDecoder.decodeObject(forKey: "token") as? String
         isCompleteFiles = aDecoder.decodeObject(forKey: "isCompleteFiles") as? Bool
         active = aDecoder.decodeObject(forKey: "active") as? Bool
@@ -114,6 +118,9 @@ class User : NSObject, NSCoding, Mappable{
 		if phone != nil{
 			aCoder.encode(phone, forKey: "phone")
 		}
+        if credit != nil{
+            aCoder.encode(credit, forKey: "credit")
+        }
 		if token != nil{
 			aCoder.encode(token, forKey: "token")
 		}
