@@ -281,6 +281,11 @@ class PhoneVerificationController: UIViewController,ToastAlertProtocol {
         })
 
     }
+    
+    @IBAction func DownloadMowtheqApp (_ sender : Any)
+    {
+        UIApplication.shared.openURL(NSURL(string: "https://itunes.apple.com/us/app/watheq/id1330268698?ls=1&mt=8")! as URL)
+    }
 }
 
 extension PhoneVerificationController: CountdownLabelDelegate {

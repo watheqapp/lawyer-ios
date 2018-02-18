@@ -148,6 +148,11 @@ class PhoneEntryController: UIViewController,ToastAlertProtocol {
                 }
     }
     
+    @IBAction func DownloadMowtheqApp (_ sender : Any)
+    {
+        UIApplication.shared.openURL(NSURL(string: "https://itunes.apple.com/us/app/watheq/id1330268698?ls=1&mt=8")! as URL)
+    }
+    
 //    @IBAction func didTapShowCountryCode(_ sender: Any) {
 //        let listScene = CountryCodeListController()
 //        listScene.delegate = self

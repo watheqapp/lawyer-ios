@@ -30,7 +30,7 @@ class ProfileViewController: UIViewController,ToastAlertProtocol {
         super.viewDidLoad()
         viewModel = UserViewModel()
         OrderModel = OrderViewModel()
-        self.GetCredit()
+       // self.GetCredit()
         ArrClosedOrdersCat = [Orderdata]()
         IsClosedOrderDataFirstLoading = true
         self.addInfiniteScrolling()

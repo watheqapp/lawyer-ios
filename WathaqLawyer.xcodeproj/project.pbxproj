@@ -200,7 +200,7 @@
 		989B46071FB8DA8D00618519 /* RefreshAppProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshAppProtocol.swift; sourceTree = "<group>"; };
 		98D00E28200941B3000F7356 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		98D00E2A200948D4000F7356 /* CurrentLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentLocationViewController.swift; sourceTree = "<group>"; };
-		98DDA1451FB797E500B8F42F /* WathaqLawyer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WathaqLawyer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		98DDA1451FB797E500B8F42F /* تطبيق الموثق.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "تطبيق الموثق.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		98DDA1481FB797E500B8F42F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		98DDA14F1FB797E500B8F42F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		98DDA1541FB797E500B8F42F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -643,7 +643,7 @@
 		98DDA1461FB797E500B8F42F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				98DDA1451FB797E500B8F42F /* WathaqLawyer.app */,
+				98DDA1451FB797E500B8F42F /* تطبيق الموثق.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -688,7 +688,7 @@
 			);
 			name = WathaqLawyer;
 			productName = Wathaq;
-			productReference = 98DDA1451FB797E500B8F42F /* WathaqLawyer.app */;
+			productReference = 98DDA1451FB797E500B8F42F /* تطبيق الموثق.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1112,7 +1112,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.watheq.watheqmowtheq;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "تطبيق الموثق";
 				SWIFT_OBJC_BRIDGING_HEADER = "Wathaq/Wathaq-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
@@ -1133,7 +1133,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.watheq.watheqmowtheq;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "تطبيق الموثق";
 				SWIFT_OBJC_BRIDGING_HEADER = "Wathaq/Wathaq-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;

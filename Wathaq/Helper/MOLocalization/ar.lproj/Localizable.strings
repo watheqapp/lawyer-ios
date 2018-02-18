@@ -20,7 +20,7 @@
 "PhoneNum" = "رقم الهاتف";
 "VerificationCode" = "رمز التحقق";
 "ResendVerificationCode" = "إعادة إرسال رمز التحقق";
-"areyoulegalized" = "هل أنت موثق ؟";
+"areyoulegalized" = "هل أنت مستخدم ؟";
 "Download the Notaries application from here" = "حمل تطبيق الموثق من هنا";
 "sendPhoneNumber" = "أرسل رقم الهاتف";
 "close" = "إغلاق";

@@ -30,10 +30,13 @@ class UserViewModel: ToastAlertProtocol {
 
         NetworkHandler.requestTarget(target: .login(phone: Phone), isDictionary: true) { (result, errorMsg) in
             if errorMsg == nil {
+                
                 let model = Mapper<UserRootClass>().map(JSONString: result as! String)!
                 let userModel = model.user
                 UserDefaults.standard.rm_setCustomObject(userModel, forKey: Constants.keys.KeyUser)
                 completion(userModel,nil)
+                
+              
             } else{
                 completion(nil,errorMsg)
             }
