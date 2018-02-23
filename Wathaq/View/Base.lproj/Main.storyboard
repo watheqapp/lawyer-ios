@@ -75,7 +75,7 @@
         <!--Empty Data Set Delegate-->
         <scene sceneID="9mj-tp-yOT">
             <objects>
-                <viewController id="kvT-uW-bVr" customClass="ProfileViewController" customModule="WathaqLawyer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="kvT-uW-bVr" customClass="ProfileViewController" customModule="تطبيق_الموثق" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rhR-Bq-Ae4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -84,7 +84,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProfileHeaderTableViewCell" rowHeight="300" id="UM5-Pz-E74" customClass="ProfileHeaderTableViewCell" customModule="WathaqLawyer" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProfileHeaderTableViewCell" rowHeight="300" id="UM5-Pz-E74" customClass="ProfileHeaderTableViewCell" customModule="تطبيق_الموثق" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="55.5" width="375" height="300"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="UM5-Pz-E74" id="Tq7-25-CsK">
@@ -197,7 +197,7 @@
                                             <outlet property="lblUserName" destination="AgI-do-gnU" id="T5t-aW-C6g"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MyOrderTableViewCell" rowHeight="170" id="54g-qU-BbN" customClass="MyOrderTableViewCell" customModule="WathaqLawyer" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MyOrderTableViewCell" rowHeight="170" id="54g-qU-BbN" customClass="MyOrderTableViewCell" customModule="تطبيق_الموثق" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="355.5" width="375" height="170"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="54g-qU-BbN" id="bZ1-uP-N3X">
@@ -343,7 +343,7 @@
                                             <outlet property="viewsmallContainer" destination="6ha-En-mdL" id="QVj-vm-p1I"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MyOrderPlaceHolderTableViewCell" rowHeight="170" id="13d-YR-ijf" userLabel="SkeletonplaceHolderCell" customClass="MyOrderPlaceHolderTableViewCell" customModule="WathaqLawyer" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MyOrderPlaceHolderTableViewCell" rowHeight="170" id="13d-YR-ijf" userLabel="SkeletonplaceHolderCell" customClass="MyOrderPlaceHolderTableViewCell" customModule="تطبيق_الموثق" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="525.5" width="375" height="170"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="13d-YR-ijf" id="oqG-j0-ifw">
@@ -544,7 +544,7 @@
         <!--Settings View Controller-->
         <scene sceneID="pk7-9a-YrO">
             <objects>
-                <viewController id="lqb-wP-RSs" customClass="SettingsViewController" customModule="WathaqLawyer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="lqb-wP-RSs" customClass="SettingsViewController" customModule="تطبيق_الموثق" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="w4Z-Pz-miQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -553,7 +553,7 @@
                                 <rect key="frame" x="15" y="64" width="345" height="554"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="SettingsTableCell" rowHeight="60" id="utB-PZ-tEe" customClass="SettingsTableCell" customModule="WathaqLawyer" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="SettingsTableCell" rowHeight="60" id="utB-PZ-tEe" customClass="SettingsTableCell" customModule="تطبيق_الموثق" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="55.5" width="345" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="utB-PZ-tEe" id="EIB-Nb-tHd">
@@ -635,7 +635,7 @@
         <!--Web View Controller-->
         <scene sceneID="ekW-hS-2iY">
             <objects>
-                <viewController storyboardIdentifier="WebViewController" id="ufi-9O-7t9" customClass="WebViewController" customModule="WathaqLawyer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WebViewController" id="ufi-9O-7t9" customClass="WebViewController" customModule="تطبيق_الموثق" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="u8H-mv-oW3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -665,7 +665,7 @@
         <!--Empty Data Set Delegate-->
         <scene sceneID="kvZ-gL-Iog">
             <objects>
-                <viewController id="0j5-N6-Vo1" customClass="WatheqViewController" customModule="WathaqLawyer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="0j5-N6-Vo1" customClass="WatheqViewController" customModule="تطبيق_الموثق" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ol8-id-uXD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -674,7 +674,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="PriceTableViewCell" rowHeight="100" id="T4h-W7-DyH" customClass="PriceTableViewCell" customModule="WathaqLawyer" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="PriceTableViewCell" rowHeight="100" id="T4h-W7-DyH" customClass="PriceTableViewCell" customModule="تطبيق_الموثق" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="T4h-W7-DyH" id="mZ5-U8-yhA">
@@ -734,7 +734,7 @@
                                             <outlet property="lbl_serviceName" destination="CcL-Im-Vfo" id="T3o-y6-J7n"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MyOrderPlaceHolderTableViewCell" rowHeight="100" id="lnR-pE-hL8" userLabel="SkeletonplaceHolderCell" customClass="PricePlaceHolderTableViewCell" customModule="WathaqLawyer" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MyOrderPlaceHolderTableViewCell" rowHeight="100" id="lnR-pE-hL8" userLabel="SkeletonplaceHolderCell" customClass="PricePlaceHolderTableViewCell" customModule="تطبيق_الموثق" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="128" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lnR-pE-hL8" id="NdL-bs-FHQ">
@@ -829,7 +829,7 @@
         <!--Phone Verification Controller-->
         <scene sceneID="frZ-gH-i6S">
             <objects>
-                <viewController storyboardIdentifier="PhoneVerificationController" id="CX3-lV-Pc6" customClass="PhoneVerificationController" customModule="WathaqLawyer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PhoneVerificationController" id="CX3-lV-Pc6" customClass="PhoneVerificationController" customModule="تطبيق_الموثق" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xOr-Fo-x5z">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -854,13 +854,13 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="lblLoginDesc"/>
                                 </userDefinedRuntimeAttributes>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="هل أنت مستخدم؟" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xn1-sH-QOJ">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="هل أنت مستخدم؟" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xn1-sH-QOJ">
                                 <rect key="frame" x="122.5" y="567" width="130" height="28"/>
                                 <fontDescription key="fontDescription" name="DinNextRegular" family="DIN Next LT W23" pointSize="18.799999237060547"/>
                                 <color key="textColor" red="0.58823529409999997" green="0.60784313729999995" blue="0.66274509800000003" alpha="1" colorSpace="deviceRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="FzS-gm-Y1Z">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="FzS-gm-Y1Z">
                                 <rect key="frame" x="10" y="600" width="355" height="37"/>
                                 <fontDescription key="fontDescription" name="DinNextRegular" family="DIN Next LT W23" pointSize="17"/>
                                 <state key="normal" title="حمل تطبيق المستخدم من هنا">
@@ -1081,7 +1081,7 @@
         <!--Complete Profile View Controller-->
         <scene sceneID="54P-S9-99a">
             <objects>
-                <viewController storyboardIdentifier="CompleteProfileViewController" id="QcH-FH-iHq" customClass="CompleteProfileViewController" customModule="WathaqLawyer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CompleteProfileViewController" id="QcH-FH-iHq" customClass="CompleteProfileViewController" customModule="تطبيق_الموثق" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Z03-Lj-gpI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1295,7 +1295,7 @@
         <!--Upload Profissional Files View Controller-->
         <scene sceneID="uDS-aJ-w96">
             <objects>
-                <viewController storyboardIdentifier="UploadProfissionalFilesViewController" id="Iqu-Yz-jGh" customClass="UploadProfissionalFilesViewController" customModule="WathaqLawyer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UploadProfissionalFilesViewController" id="Iqu-Yz-jGh" customClass="UploadProfissionalFilesViewController" customModule="تطبيق_الموثق" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3bN-99-LmI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1555,7 +1555,7 @@
         <!--Phone Entry Controller-->
         <scene sceneID="tok-Z4-feV">
             <objects>
-                <viewController storyboardIdentifier="PhoneEntryController" id="MR9-9g-UI6" customClass="PhoneEntryController" customModule="WathaqLawyer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PhoneEntryController" id="MR9-9g-UI6" customClass="PhoneEntryController" customModule="تطبيق_الموثق" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cJO-5C-Nyh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1839,7 +1839,7 @@
         <!--Empty Data Set Delegate-->
         <scene sceneID="3In-6N-mNV">
             <objects>
-                <viewController id="h5T-2D-gKo" customClass="NotficationsViewController" customModule="WathaqLawyer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="h5T-2D-gKo" customClass="NotficationsViewController" customModule="تطبيق_الموثق" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vPl-0w-qpB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1848,7 +1848,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MyOrderTableViewCell" rowHeight="170" id="TX9-jN-ebL" customClass="MyOrderTableViewCell" customModule="WathaqLawyer" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MyOrderTableViewCell" rowHeight="170" id="TX9-jN-ebL" customClass="MyOrderTableViewCell" customModule="تطبيق_الموثق" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="170"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TX9-jN-ebL" id="agm-fH-11E">
@@ -1971,7 +1971,7 @@
                                             <outlet property="viewsmallContainer" destination="knF-ZV-1xc" id="I4C-AQ-CFx"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MyOrderPlaceHolderTableViewCell" rowHeight="170" id="oaC-RL-F9c" userLabel="SkeletonplaceHolderCell" customClass="MyOrderPlaceHolderTableViewCell" customModule="WathaqLawyer" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MyOrderPlaceHolderTableViewCell" rowHeight="170" id="oaC-RL-F9c" userLabel="SkeletonplaceHolderCell" customClass="MyOrderPlaceHolderTableViewCell" customModule="تطبيق_الموثق" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="198" width="375" height="170"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oaC-RL-F9c" id="9cY-Sb-QJW">
@@ -2173,7 +2173,7 @@
         <!--Current Location View Controller-->
         <scene sceneID="S86-Py-c1H">
             <objects>
-                <viewController storyboardIdentifier="CurrentLocationViewController" id="YSX-kA-wms" customClass="CurrentLocationViewController" customModule="WathaqLawyer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CurrentLocationViewController" id="YSX-kA-wms" customClass="CurrentLocationViewController" customModule="تطبيق_الموثق" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jmL-YX-RSQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2192,7 +2192,7 @@
         <!--Empty Data Set Delegate-->
         <scene sceneID="yV2-Oo-Rqb">
             <objects>
-                <viewController id="5Zu-EX-xW6" customClass="MyOrdersViewController" customModule="WathaqLawyer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="5Zu-EX-xW6" customClass="MyOrdersViewController" customModule="تطبيق_الموثق" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uG9-lr-lb6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2235,7 +2235,7 @@
                                 <rect key="frame" x="0.0" y="130" width="375" height="488"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MyOrderTableViewCell" rowHeight="170" id="aIq-ov-bfE" customClass="MyOrderTableViewCell" customModule="WathaqLawyer" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MyOrderTableViewCell" rowHeight="170" id="aIq-ov-bfE" customClass="MyOrderTableViewCell" customModule="تطبيق_الموثق" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="170"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aIq-ov-bfE" id="VfA-Pc-Lfh">
@@ -2399,7 +2399,7 @@
                                             <outlet property="viewsmallContainer" destination="aYa-ji-TaM" id="Jj7-Xo-NFJ"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MyOrderPlaceHolderTableViewCell" rowHeight="170" id="H7O-Lf-RdJ" userLabel="SkeletonplaceHolderCell" customClass="MyOrderPlaceHolderTableViewCell" customModule="WathaqLawyer" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MyOrderPlaceHolderTableViewCell" rowHeight="170" id="H7O-Lf-RdJ" userLabel="SkeletonplaceHolderCell" customClass="MyOrderPlaceHolderTableViewCell" customModule="تطبيق_الموثق" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="198" width="375" height="170"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="H7O-Lf-RdJ" id="JLI-Fd-5kR">
@@ -2598,7 +2598,7 @@
         <!--Empty Data Set Delegate-->
         <scene sceneID="Ima-n2-Eoe">
             <objects>
-                <viewController storyboardIdentifier="Chat" title="Chat" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wlV-h9-NKY" customClass="ChatVC" customModule="WathaqLawyer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Chat" title="Chat" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wlV-h9-NKY" customClass="ChatVC" customModule="تطبيق_الموثق" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mHK-Fr-iPH"/>
                         <viewControllerLayoutGuide type="bottom" id="YZj-pV-PgC"/>
@@ -2611,7 +2611,7 @@
                                 <rect key="frame" x="0.0" y="115" width="375" height="503"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Sender" id="Y2r-xo-avw" customClass="SenderCell" customModule="WathaqLawyer" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Sender" id="Y2r-xo-avw" customClass="SenderCell" customModule="تطبيق_الموثق" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="30"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Y2r-xo-avw" id="Q8R-33-O8y">
@@ -2654,7 +2654,7 @@
                                             <outlet property="messageBackground" destination="Fwq-3n-Cfg" id="hFR-P4-bBq"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Receiver" id="VFa-Ff-Ndd" customClass="ReceiverCell" customModule="WathaqLawyer" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Receiver" id="VFa-Ff-Ndd" customClass="ReceiverCell" customModule="تطبيق_الموثق" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="58" width="375" height="30"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VFa-Ff-Ndd" id="HVz-6d-cGI">
@@ -2909,7 +2909,7 @@
         <!--Empty Data Set Delegate-->
         <scene sceneID="HJ6-D2-Rmj">
             <objects>
-                <viewController storyboardIdentifier="AcceptsOrderViewController" id="NwO-Mw-jxt" customClass="AcceptsOrderViewController" customModule="WathaqLawyer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AcceptsOrderViewController" id="NwO-Mw-jxt" customClass="AcceptsOrderViewController" customModule="تطبيق_الموثق" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iOz-NU-5UV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2955,7 +2955,7 @@
                                     <constraint firstAttribute="height" constant="200" id="mKU-8A-V18"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="PriceTableViewCell" rowHeight="100" id="QoJ-tg-Jjj" customClass="PriceTableViewCell" customModule="WathaqLawyer" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="PriceTableViewCell" rowHeight="100" id="QoJ-tg-Jjj" customClass="PriceTableViewCell" customModule="تطبيق_الموثق" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="355" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QoJ-tg-Jjj" id="LzM-V0-TGG">
@@ -3003,7 +3003,7 @@
                                             <outlet property="lbl_serviceName" destination="GnF-rg-TfF" id="n4K-1J-dBP"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="PricePlaceHolderTableViewCell" rowHeight="100" id="tQw-tw-dbJ" userLabel="SkeletonplaceHolderCell" customClass="PricePlaceHolderTableViewCell" customModule="WathaqLawyer" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="PricePlaceHolderTableViewCell" rowHeight="100" id="tQw-tw-dbJ" userLabel="SkeletonplaceHolderCell" customClass="PricePlaceHolderTableViewCell" customModule="تطبيق_الموثق" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="128" width="355" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tQw-tw-dbJ" id="6fd-kJ-JhT">
@@ -3178,7 +3178,7 @@
         <!--Contact Us View Controller-->
         <scene sceneID="zdx-IQ-7E5">
             <objects>
-                <viewController id="K2J-jX-jZS" customClass="ContactUsViewController" customModule="WathaqLawyer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="K2J-jX-jZS" customClass="ContactUsViewController" customModule="تطبيق_الموثق" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="m5K-Bu-Dnd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -3187,7 +3187,7 @@
                                 <rect key="frame" x="0.0" y="114" width="375" height="504"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="AddressLocationTableViewCell" rowHeight="73" id="GeL-28-oXg" customClass="AddressLocationTableViewCell" customModule="WathaqLawyer" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="AddressLocationTableViewCell" rowHeight="73" id="GeL-28-oXg" customClass="AddressLocationTableViewCell" customModule="تطبيق_الموثق" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="73"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GeL-28-oXg" id="gbU-Qs-seJ">
@@ -3231,7 +3231,7 @@
                                             <outlet property="txtAddressLocation" destination="zyF-fA-j6R" id="yZU-Kg-JcP"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="ContactusDetailsTableViewCell" rowHeight="228" id="QSi-gi-MRi" customClass="ContactusDetailsTableViewCell" customModule="WathaqLawyer" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="ContactusDetailsTableViewCell" rowHeight="228" id="QSi-gi-MRi" customClass="ContactusDetailsTableViewCell" customModule="تطبيق_الموثق" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="101" width="375" height="228"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QSi-gi-MRi" id="Fjg-Ud-msJ">
@@ -3276,7 +3276,7 @@
                                             <outlet property="txtContent" destination="hLT-AZ-beN" id="YDI-qR-2ig"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="CreateOrderTableViewCell" id="T7T-yM-oZD" customClass="CreateOrderTableViewCell" customModule="WathaqLawyer" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="CreateOrderTableViewCell" id="T7T-yM-oZD" customClass="CreateOrderTableViewCell" customModule="تطبيق_الموثق" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="329" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="T7T-yM-oZD" id="aJL-N2-odZ">
@@ -3353,6 +3353,6 @@
         <image name="tab_bar_price" width="29" height="29"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Ibk-nl-KbE"/>
+        <segue reference="K8v-vj-RSf"/>
     </inferredMetricsTieBreakers>
 </document>
