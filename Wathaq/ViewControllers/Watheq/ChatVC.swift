@@ -71,7 +71,7 @@ class ChatVC: UIViewController, UITextFieldDelegate,UITableViewDelegate,UITableV
         {
             self.inputTextField.isEnabled = false
             btncloseOrder.setTitle(NSLocalizedString("OrderClosed", comment: ""), for: .normal)
-
+            btncloseOrder.setTitleColor(UIColor.ashGrey, for: .normal)
         }
     }
     
@@ -110,6 +110,8 @@ class ChatVC: UIViewController, UITextFieldDelegate,UITableViewDelegate,UITableV
     
     @IBAction func closeOrderAction (_ sender:Any)
     {
+        if OrderObj.status != "Closed"
+        {
         let actionSheetController: UIAlertController = UIAlertController(title: "", message: NSLocalizedString("closeOrder",comment:""), preferredStyle: .actionSheet)
         let cancelButton = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel) { _ in
         }
@@ -122,6 +124,7 @@ class ChatVC: UIViewController, UITextFieldDelegate,UITableViewDelegate,UITableV
         
         
         self.present(actionSheetController, animated: true, completion: nil)
+        }
     }
     
     

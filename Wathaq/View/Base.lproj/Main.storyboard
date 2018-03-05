@@ -2710,7 +2710,7 @@
                                         <rect key="frame" x="15" y="7" width="116" height="37"/>
                                         <fontDescription key="fontDescription" name="DinNextRegular" family="DIN Next LT W23" pointSize="17"/>
                                         <state key="normal" title="close this Order">
-                                            <color key="titleColor" red="0.1019607843" green="0.36862745099999999" blue="0.27450980390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="titleColor" red="0.0" green="0.57647058819999997" blue="0.32156862749999998" alpha="1" colorSpace="deviceRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="closeOrderAction:" destination="wlV-h9-NKY" eventType="touchUpInside" id="btn-62-efx"/>
