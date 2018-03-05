@@ -33,6 +33,8 @@ pod 'Alamofire', '~> 4.3'   # network helper
   pod 'Firebase/RemoteConfig'
   pod "PullToRefreshKit"
   pod "ESPullToRefresh"
+  pod 'IQKeyboardManagerSwift', '5.0.0'
+
 
 
 end

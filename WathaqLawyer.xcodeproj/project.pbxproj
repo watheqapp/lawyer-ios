@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		12E62555CC89654C5A1E43F1 /* Pods_WathaqLawyer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58BA95527BC7C292D3B3C383 /* Pods_WathaqLawyer.framework */; };
+		934C5099204DBBC400C12970 /* ChatAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 934C5098204DBBC400C12970 /* ChatAssets.xcassets */; };
 		982416C81FC4D15900080DE9 /* EmptyDataAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 982416C71FC4D15900080DE9 /* EmptyDataAssets.xcassets */; };
 		982416CD1FC4D93100080DE9 /* AbstractViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982416CC1FC4D93100080DE9 /* AbstractViewController.swift */; };
 		9825892B20155C5B00B701EB /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9825892A20155C5B00B701EB /* WebViewController.swift */; };
@@ -103,6 +104,7 @@
 
 /* Begin PBXFileReference section */
 		58BA95527BC7C292D3B3C383 /* Pods_WathaqLawyer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WathaqLawyer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		934C5098204DBBC400C12970 /* ChatAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ChatAssets.xcassets; sourceTree = "<group>"; };
 		982416C71FC4D15900080DE9 /* EmptyDataAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = EmptyDataAssets.xcassets; sourceTree = "<group>"; };
 		982416CC1FC4D93100080DE9 /* AbstractViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AbstractViewController.swift; sourceTree = "<group>"; };
 		9825892A20155C5B00B701EB /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
@@ -567,6 +569,7 @@
 				982416C71FC4D15900080DE9 /* EmptyDataAssets.xcassets */,
 				988943011FCA2B74001B4F75 /* LoginAssets.xcassets */,
 				9833D24C20123C2100B6909B /* ProfileAssets.xcassets */,
+				934C5098204DBBC400C12970 /* ChatAssets.xcassets */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -742,6 +745,7 @@
 			files = (
 				988942DC1FC7230D001B4F75 /* DinNextMedium.ttf in Resources */,
 				989B46011FB8D9E200618519 /* Localizable.strings in Resources */,
+				934C5099204DBBC400C12970 /* ChatAssets.xcassets in Resources */,
 				98DDA1551FB797E500B8F42F /* LaunchScreen.storyboard in Resources */,
 				988942DD1FC7230D001B4F75 /* DinNextRegular.ttf in Resources */,
 				9870BA121FB8D489008E678B /* Assets.xcassets in Resources */,
@@ -777,6 +781,7 @@
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/Hero/Hero.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
@@ -805,6 +810,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hero.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",

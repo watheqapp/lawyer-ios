@@ -12,6 +12,7 @@ import FirebaseAuth
 import UserNotifications
 import GoogleMaps
 import FirebaseMessaging
+import IQKeyboardManagerSwift
 
 
 @UIApplicationMain
@@ -24,6 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         setupLanguage()
         removeTabBarShadowLine()
         GMSServices.provideAPIKey(Constants.keys.GoogleMapsKey)
+        setUpKeyboardManager()
 
         //Firebase
         if #available(iOS 10.0, *) {
@@ -100,6 +102,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         }
 
         return true
+    }
+    
+    func setUpKeyboardManager() {
+        IQKeyboardManager.sharedManager().enable = true
+        IQKeyboardManager.sharedManager().shouldResignOnTouchOutside = true
+        //disable IQKeyboard for those classes
+        //        IQKeyboardManager.sharedManager().disabledDistanceHandlingClasses = [EvaluateCourseViewController.self, AccreditationFormsViewController.self]
     }
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {

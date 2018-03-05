@@ -27,6 +27,8 @@ import Firebase
 import CoreLocation
 import TransitionButton
 import DZNEmptyDataSet
+import MapKit
+import CoreLocation
 
 class ChatVC: UIViewController, UITextFieldDelegate,UITableViewDelegate,UITableViewDataSource,  UINavigationControllerDelegate, UIImagePickerControllerDelegate, CLLocationManagerDelegate,ToastAlertProtocol {
     
@@ -41,6 +43,8 @@ class ChatVC: UIViewController, UITextFieldDelegate,UITableViewDelegate,UITableV
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var inputTextField: UITextField!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var btnSend: UIButton!
+
     var custmoizeBackButton : Bool!
 
     override var inputAccessoryView: UIView? {
@@ -303,8 +307,41 @@ class ChatVC: UIViewController, UITextFieldDelegate,UITableViewDelegate,UITableV
         self.checkOrderStatus()
 
         viewModel = OrderViewModel()
+        self.title = "\(NSLocalizedString("OrderNumber", comment: "") as String) \(OrderObj.id as! Int)"
         
+        let CallImg    = UIImage(named: "phone-outgoing")!
+        let LocationImg  = UIImage(named: "gps-remove")!
+        
+        let CallButton   = UIBarButtonItem(image: CallImg,  style: .plain, target: self, action: "didTapCallButton:")
+        let LocatonButton = UIBarButtonItem(image: LocationImg,  style: .plain, target: self, action: "didTapLocationButton:")
+        btnSend.setTitle(NSLocalizedString("send", comment: ""), for: .normal)
+        inputTextField.placeholder = NSLocalizedString("writeMessage", comment: "")
+        navigationItem.rightBarButtonItems = [CallButton, LocatonButton]
 
+    }
+    
+    @IBAction func didTapCallButton(_ sender: Any){
+        
+        if let Phone =  OrderObj.client?.phone
+        {
+        guard let number = URL(string: "tel://" + "\(Phone as! Int)") else { return }
+        UIApplication.shared.open(number)
+        }
+        
+    }
+    
+    @IBAction func didTapLocationButton(_ sender: Any){
+        
+        if let location =  OrderObj.clientLat
+        {
+            let coordinate = CLLocationCoordinate2DMake(Double((OrderObj.clientLat)!),Double((OrderObj.clientLong)!))
+            let mapItem = MKMapItem(placemark: MKPlacemark(coordinate: coordinate, addressDictionary:nil))
+            mapItem.name = OrderObj.client?.name
+            mapItem.openInMaps(launchOptions: [MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving])
+        }
+        
+        
+        
     }
 }
 
