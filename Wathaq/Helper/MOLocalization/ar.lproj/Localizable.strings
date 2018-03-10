@@ -42,7 +42,7 @@
 "AgreeOnTerms" = "موافق على كافة الأحكام والشروط";
 "userName" = "اسم المستخدم";
 "UserMail" = "البريد الإلكتروني";
-"Confirm" = "تأكيد";
+"Confirm" = "تم";
 "Profile Data Completed Thank you" = "بيانات الملف الشخصي اكتملت , شكرا";
 "Updatelocation" = "تحديث الموقع";
 "ProveProfession" = "اثبات المهنة";
@@ -62,7 +62,7 @@
 "OrderCategory" = "نوع الطلب";
 "Name" = "الاسم";
 "delivery" = "مكان الطلب";
-"Confirm" = "تاكيد";
+"Confirm" = "تم";
 "Price Coast" = "سعر الخدمة";
 "OrderClosed" = "تم اغلاق الطلب";
 "closeOrder" = "هل تريد اغلاق هذا الطلب";
@@ -76,13 +76,13 @@
 "Are you sure you want to logout?" = "هل انت متآكد من تسجيل الخروج";
 "LogOut" = "تسجيل خروج";
 "No Categiories" = "لا يوجد تصنيفات";
-"Contact Us" = "اتصل بنا";
+"Contact Us" = "راسلنا";
 "LetterAddress" = "عنوان الرساله";
 "Lettercontent" = "تفاصيل الرساله";
-"SendData" = "ارسال";
+"SendData" = "تم";
 "Your Request Recieved, you Will Be Contacted Shortly" = "تم استلام رسالتك، سوف نتواصل معك قريبا";
 "Time" = "الوقت المحدد";
 "AwayFromYou" = "يبعد عنك";
 "Credit" = "الرصيد المتاح";
-"send" = "ارسال";
+"send" = "تم";
 "writeMessage" = "اكتب رسالتك";

@@ -20,6 +20,10 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="green_splash" translatesAutoresizingMaskIntoConstraints="NO" id="eZI-G4-ayo">
                                 <rect key="frame" x="110" y="257.5" width="154" height="152"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="154" id="Vlg-i3-Ijy"/>
+                                    <constraint firstAttribute="height" constant="152" id="mGc-4l-WcE"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.10196078431372549" green="0.36862745098039218" blue="0.27450980392156865" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
