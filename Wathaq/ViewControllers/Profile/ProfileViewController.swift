@@ -329,9 +329,17 @@ extension ProfileViewController: UITableViewDelegate {
             cellHeader.lblNumOfServices.text = "\(credit as! Int)"
         }
         cellHeader.lblTitleNumOfServices.text = NSLocalizedString("Credit", comment: "")
-        cellHeader.lbl_Availbilty.text = NSLocalizedString("Availbilty", comment: "")
         cellHeader.btn_switchControl.addTarget(self, action: #selector(switchValueDidChange), for: .valueChanged)
         cellHeader.btn_switchControl.isOn = (userObj?.isOnline)!
+        if userObj?.isOnline == true
+        {
+            cellHeader.lbl_Availbilty.text = NSLocalizedString("Availbe", comment: "")
+        }
+        else
+        {
+            cellHeader.lbl_Availbilty.text = NSLocalizedString("NotAvailbe", comment: "")
+
+        }
         
         return cellHeader
     }
