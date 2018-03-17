@@ -10,6 +10,7 @@ import UIKit
 import GoogleMaps
 import CoreLocation
 import GoogleMaps
+import TransitionButton
 
 
 
@@ -26,14 +27,28 @@ class CurrentLocationViewController: UIViewController,CLLocationManagerDelegate,
     var mapView: GMSMapView!
     var zoomLevel: Float = 15.0
     var delegate: MoawtheqLocationDelegate?
+    var UpdateLocation = false
+    var viewModel: UserViewModel!
+
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = NSLocalizedString("ChooseAdreess", comment: "")
+        viewModel = UserViewModel()
 
+        self.title = NSLocalizedString("ChooseAdreess", comment: "")
+         configureView()
         self.setupLocationManager()
   }
+    func configureView() {
+        
+        if #available(iOS 11.0, *) {
+            navigationItem.largeTitleDisplayMode = .never
+        } else {
+            // Fallback on earlier versions
+        }
+    }
+    
     func setupLocationManager(){
         locationManager = CLLocationManager()
         locationManager?.delegate = self
@@ -58,7 +73,7 @@ class CurrentLocationViewController: UIViewController,CLLocationManagerDelegate,
         view.addSubview(mapView)
         mapView.isHidden = true
         
-        let button = UIButton(frame: CGRect(x: self.view.center.x - (self.view.frame.size.width - 50)/2, y: self.view.frame.size.height - 200, width: self.view.frame.size.width - 50 , height: 60))
+        let button = TransitionButton(frame: CGRect(x: self.view.center.x - (self.view.frame.size.width - 50)/2, y: self.view.frame.size.height - 200, width: self.view.frame.size.width - 50 , height: 60))
         button.backgroundColor = UIColor.deepBlue
         button.setTitle(NSLocalizedString("ChooseAdreess", comment: ""), for: .normal)
         button.titleLabel?.font =  UIFont(name: Constants.FONTS.FONT_AR, size: 17)
@@ -69,12 +84,39 @@ class CurrentLocationViewController: UIViewController,CLLocationManagerDelegate,
     
     @IBAction func ChooseAddress (_ sender : Any)
     {
-        
+        let TranstBtn:TransitionButton =  sender as! TransitionButton
+
         if currentLocation != nil {
             
-           // _ = navigationController?.popViewController(animated: true)
-            self.delegate?.didChooseLocation(currentLocation: self.currentLocation!) // app crashes after executing this line
-            self.dismiss(animated: true, completion: nil)
+            if UpdateLocation == true
+            {
+                TranstBtn.startAnimation()
+                self.view.isUserInteractionEnabled = false
+                let userObj:User? = UserDefaults.standard.rm_customObject(forKey: Constants.keys.KeyUser) as? User
+                
+                viewModel.completeUserProfile(userName: (userObj?.name)!, UseEmail: (userObj?.email)!, UseImage:"" , Userlat: (self.currentLocation?.coordinate.latitude)!, Userlong:(self.currentLocation?.coordinate.longitude)!, completion: { (userObj, errorMsg) in
+                    if errorMsg == nil {
+                        
+                        TranstBtn.stopAnimation()
+                        self.view.isUserInteractionEnabled = true
+                       self.showToastMessage(title:NSLocalizedString("location updated Thank you", comment: "") , isBottom:true , isWindowNeeded: true, BackgroundColor: UIColor.greenAlert, foregroundColor: UIColor.white)
+                        self.navigationController?.popViewController()
+
+                    } else{
+                        TranstBtn.stopAnimation()
+                        self.view.isUserInteractionEnabled = true
+
+                        self.showToastMessage(title:errorMsg! , isBottom:true , isWindowNeeded: true, BackgroundColor: UIColor.redAlert, foregroundColor: UIColor.white)
+                    }
+                })
+            }
+            else
+            {
+                // _ = navigationController?.popViewController(animated: true)
+                self.delegate?.didChooseLocation(currentLocation: self.currentLocation!) // app crashes after executing this line
+                self.dismiss(animated: true, completion: nil)
+            }
+          
 
         }
         else

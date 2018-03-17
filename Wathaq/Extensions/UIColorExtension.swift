@@ -13,6 +13,10 @@ extension UIColor {
         self.init(red: r / 255, green: g / 255, blue: b / 255, alpha: 1)
     }
     
+    class var YellowSEGMENT: UIColor {
+        return UIColor(red: 250.0 / 255.0, green: 214.0 / 255.0, blue: 51.0 / 255.0, alpha: 1.0)
+    }
+    
     class var redAlert: UIColor {
         return UIColor(red: 208.0 / 255.0, green: 75.0 / 255.0, blue: 75.0 / 255.0, alpha: 1.0)
     }

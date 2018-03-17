@@ -69,7 +69,7 @@
 "OrderClosed" = "Order closed now";
 "closeOrder" = "do you want to close this order";
 "closeOrderTitle" = "close this order";
-"No messages" = "No messages yet";
+"No messages" = "Hello . this is you Chat page with ";
 "No Notifications" = "No Notifications";
 "Hoursago" = "Hours ago";
 "DaysAgo" = "Days ago";
@@ -88,3 +88,7 @@
 "Credit" = "Credit";
 "send" = "send";
 "writeMessage" = "Type message";
+"Availbilty" = "Availbilty";
+"location updated Thank you" = " the location has been updated";
+"ChooseAdreess" = "Choose Address";
+

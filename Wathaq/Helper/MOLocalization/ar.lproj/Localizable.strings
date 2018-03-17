@@ -9,7 +9,7 @@
 "Slow_Internet" = "بطء الإتصال بالإنترنت";
 
 "Settings" = "الإعدادات";
-"profile" = "ملفي الشخصي";
+"profile" = "بروفايل";
 "notifications" = "الإشعارات";
 "Prices" = "الاسعار";
 "myOrders" = "طلباتي";
@@ -44,13 +44,14 @@
 "UserMail" = "البريد الإلكتروني";
 "Confirm" = "تم";
 "Profile Data Completed Thank you" = "بيانات الملف الشخصي اكتملت , شكرا";
-"Updatelocation" = "تحديث الموقع";
+"Updatelocation" = "حدد موقعك او مقرك";
 "ProveProfession" = "اثبات المهنة";
-"ProveProfessionMsg" = "لضمان خدمتنا المقدمة للمستخدمين, نحتاج بعض الوثائق لاثبات مهنتك وخبرتك";
-"Lawyer" = "محامي";
+"ProveProfessionMsg" = "ضف صورة الهوية ورخصة المهنة";
+"Lawyer" = "موثق";
+"Ma2zon" = "مأذون";
 "SendData" = "إرسال البيانات";
-"idFile" = "صوره الهويه";
-"liscenceFile" = "التفويض القانوني";
+"idFile" = "الهوية";
+"liscenceFile" = "الرخصة";
 "Take Picture from" = "التقاط صورة من";
 "profession Data files uploaded successfully Thank you" = "الملفات التي تم تحميلها بنجاح";
 "pleaseChooseaddressFirst" = "الرجاء اختيار عنوان";
@@ -67,7 +68,7 @@
 "OrderClosed" = "تم اغلاق الطلب";
 "closeOrder" = "هل تريد اغلاق هذا الطلب";
 "closeOrderTitle" = "اغلاق هذا الطلب";
-"No messages" = "لايوجد رسائل لهذاالطلب";
+"No messages" = " مرحبا. هنا صفحة حوارك مع";
 "No Notifications" = "لايوجد تنبيهات";
 "Hoursago" = "ساعه";
 "DaysAgo" = "يوم";
@@ -86,3 +87,6 @@
 "Credit" = "الرصيد المتاح";
 "send" = "تم";
 "writeMessage" = "اكتب رسالتك";
+"Availbilty" = "الحاله";
+"location updated Thank you" = "تم تحديث موقعك .. شكرا لك";
+"ChooseAdreess" = "اختيار العنوان";

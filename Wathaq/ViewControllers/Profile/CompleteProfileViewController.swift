@@ -78,7 +78,10 @@ class CompleteProfileViewController: UIViewController,ToastAlertProtocol,UIImage
         
     }
     
-    
+    @IBAction func openTerms (_ sender :Any)
+    {
+        self.performSegue(withIdentifier: "S_Profile_WebView", sender: "http://159.89.41.54/watheq/public/terms")
+    }
     func getAddress(handler: @escaping (String) -> Void)
     {
         var address: String = ""
@@ -221,6 +224,16 @@ class CompleteProfileViewController: UIViewController,ToastAlertProtocol,UIImage
     }
     
     
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "S_Profile_WebView"  {
+            let URL = sender as!  String
+            let webView = segue.destination as! WebViewController
+            webView.title = NSLocalizedString("Terms and Conditions", comment: "")
+            webView.webPage = URL
+            webView.isCompleteProfile = true
+        }
+    }
   
     
 

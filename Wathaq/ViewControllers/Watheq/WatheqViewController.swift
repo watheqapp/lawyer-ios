@@ -132,7 +132,6 @@ class WatheqViewController: AbstractViewController,ToastAlertProtocol {
     }
     
     override  func viewDidLayoutSubviews() {
-       self.customizeTabBarLocal()
         
         if #available(iOS 11.0, *) {
             self.navigationController?.navigationBar.prefersLargeTitles = true
@@ -146,22 +145,7 @@ class WatheqViewController: AbstractViewController,ToastAlertProtocol {
 
     }
     
-    func customizeTabBarLocal ()
-    {
-       
-        let TabBarView = UIApplication.shared.delegate?.window??.rootViewController as! UITabBarController
-        let tabBar1 :UITabBarItem  = TabBarView.tabBar.items![0]
-        tabBar1.title = NSLocalizedString("Prices", comment: "")
-        
-        let tabBar2:UITabBarItem = TabBarView.tabBar.items![1]
-        tabBar2.title = NSLocalizedString("myOrders", comment: "")
-        
-        let tabBar3:UITabBarItem = TabBarView.tabBar.items![2] as UITabBarItem
-        tabBar3.title = NSLocalizedString("notifications", comment: "")
-        
-        let tabBar4:UITabBarItem = TabBarView.tabBar.items![3] as UITabBarItem
-        tabBar4.title = NSLocalizedString("profile", comment: "")
-    }
+  
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

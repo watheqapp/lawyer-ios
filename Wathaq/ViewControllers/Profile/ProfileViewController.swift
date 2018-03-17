@@ -30,7 +30,7 @@ class ProfileViewController: UIViewController,ToastAlertProtocol {
         super.viewDidLoad()
         viewModel = UserViewModel()
         OrderModel = OrderViewModel()
-       // self.GetCredit()
+        self.GetCredit()
         ArrClosedOrdersCat = [Orderdata]()
         IsClosedOrderDataFirstLoading = true
         self.addInfiniteScrolling()
@@ -52,19 +52,42 @@ class ProfileViewController: UIViewController,ToastAlertProtocol {
 
     }
     
+    func customizeTabBarLocal ()
+    {
+        
+        let TabBarView = UIApplication.shared.delegate?.window??.rootViewController as! UITabBarController
+        let tabBar1 :UITabBarItem  = TabBarView.tabBar.items![0]
+        tabBar1.title = NSLocalizedString("profile", comment: "")
+        
+        let tabBar2:UITabBarItem = TabBarView.tabBar.items![1]
+        tabBar2.title = NSLocalizedString("myOrders", comment: "")
+        
+        let tabBar3:UITabBarItem = TabBarView.tabBar.items![2] as UITabBarItem
+        tabBar3.title = NSLocalizedString("notifications", comment: "")
+        
+        let tabBar4:UITabBarItem = TabBarView.tabBar.items![3] as UITabBarItem
+        tabBar4.title = NSLocalizedString("Prices", comment: "")
+    }
+    
+    
     func GetCredit ()
     {
         let userObj:User? = UserDefaults.standard.rm_customObject(forKey: Constants.keys.KeyUser) as? User
 
-        viewModel.loginUser(Phone: "\(userObj?.phone as! Int)", completion: { (userObj, errorMsg) in
+        viewModel.completeUserProfile(userName: (userObj?.name)!, UseEmail: (userObj?.email)!, UseImage:"" , Userlat: (userObj?.latitude)!, Userlong:(userObj?.longitude)!, completion: { (userObj, errorMsg) in
             if errorMsg == nil {
-              self.tbl_Orders.reloadData()
+                
+                
+                self.tbl_Orders.reloadData()
+
+                
             } else{
                 self.showToastMessage(title:errorMsg! , isBottom:true , isWindowNeeded: true, BackgroundColor: UIColor.redAlert, foregroundColor: UIColor.white)
             }
         })
 
     }
+    
     
     func addInfiniteScrolling(){
         self.tbl_Orders.es.addInfiniteScrolling {
@@ -130,7 +153,8 @@ class ProfileViewController: UIViewController,ToastAlertProtocol {
 
     
     override  func viewDidLayoutSubviews() {
-       
+        self.customizeTabBarLocal()
+
     }
     
 
@@ -146,16 +170,53 @@ class ProfileViewController: UIViewController,ToastAlertProtocol {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func didTapLocationButton(_ sender: Any){
+        
+        self.performSegue(withIdentifier: "S_Profile_UpdateLocation", sender: nil)
+        
+    }
+    
+    @objc func switchValueDidChange(sender:UISwitch!)
+    {
+        var isOnline : Int!
+        if (sender.isOn == true){
+            print("on")
+            isOnline = 1
+        }
+        else{
+            print("off")
+            isOnline = 0
+ 
+        }
+        
+        let userObj:User? = UserDefaults.standard.rm_customObject(forKey: Constants.keys.KeyUser) as? User
+        
+        viewModel.updateVisiblity(isOnline: isOnline, completion: { (userObj, errorMsg) in
+            if errorMsg == nil {
+                
+                
+                self.tbl_Orders.reloadData()
+                
+                
+            } else{
+                self.showToastMessage(title:errorMsg! , isBottom:true , isWindowNeeded: true, BackgroundColor: UIColor.redAlert, foregroundColor: UIColor.white)
+            }
+        })
 
-    /*
+        
+    }
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "S_Profile_UpdateLocation"  {
+            let CurrentViewLocation = segue.destination as! CurrentLocationViewController
+            CurrentViewLocation.UpdateLocation = true
+        }
     }
-    */
 
 }
 
@@ -268,6 +329,10 @@ extension ProfileViewController: UITableViewDelegate {
             cellHeader.lblNumOfServices.text = "\(credit as! Int)"
         }
         cellHeader.lblTitleNumOfServices.text = NSLocalizedString("Credit", comment: "")
+        cellHeader.lbl_Availbilty.text = NSLocalizedString("Availbilty", comment: "")
+        cellHeader.btn_switchControl.addTarget(self, action: #selector(switchValueDidChange), for: .valueChanged)
+        cellHeader.btn_switchControl.isOn = (userObj?.isOnline)!
+        
         return cellHeader
     }
     

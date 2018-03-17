@@ -69,7 +69,7 @@ public enum WatheqApi {
     case getNotification
     case getPrices
     case ContactUs(title:String, content:String)
-
+    case updateVisibality (isOnline:Int)
 
 
 
@@ -114,11 +114,13 @@ extension WatheqApi: TargetType,AccessTokenAuthorizable {
             return "api/auth/laywer/prices"
         case .ContactUs :
             return "api/auth/contactus/create"
+        case .updateVisibality :
+            return "api/auth/lawyer/updateVisibility"
         }
     }
     public var method: Moya.Method {
         switch self {
-        case .login,.completeProfile,.completeFiles,.UpdateProfile,.registerDeviceToken,.logout,.ContactUs:
+        case .login,.completeProfile,.completeFiles,.UpdateProfile,.registerDeviceToken,.logout,.ContactUs,.updateVisibality:
             return .post
         case .getNewOrders,.getPendingOrders,.getClosedOrders,.getOrderDetails,.AcceptOrder,.CloseOrder,.getNotification,.getPrices:
             return .get
@@ -157,6 +159,8 @@ extension WatheqApi: TargetType,AccessTokenAuthorizable {
             return .requestPlain
         case .ContactUs(let title, let content):
             return .requestParameters(parameters: ["title":title , "content" :content], encoding: JSONEncoding.default)
+        case .updateVisibality(let isOnline):
+            return .requestParameters(parameters: ["isOnline":isOnline], encoding: JSONEncoding.default)
         }
     }
     
@@ -164,7 +168,7 @@ extension WatheqApi: TargetType,AccessTokenAuthorizable {
         switch self {
         case .login:
             return .none
-        case .completeProfile,.completeFiles,.UpdateProfile,.registerDeviceToken,.logout,.getNewOrders,.getClosedOrders,.getPendingOrders,.getOrderDetails,.AcceptOrder,.CloseOrder,.getNotification,.getPrices,.ContactUs:
+        case .completeProfile,.completeFiles,.UpdateProfile,.registerDeviceToken,.logout,.getNewOrders,.getClosedOrders,.getPendingOrders,.getOrderDetails,.AcceptOrder,.CloseOrder,.getNotification,.getPrices,.ContactUs,.updateVisibality:
             return .bearer
         }
     }

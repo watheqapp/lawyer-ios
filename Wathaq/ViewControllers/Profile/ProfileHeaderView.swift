@@ -18,6 +18,9 @@ class ProfileHeaderView: UIViewController {
     @IBOutlet weak var lblTitleNumOfConsultation: UILabel!
     @IBOutlet weak var imgUserImg: UIImageView!
 
+  
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = UserViewModel()

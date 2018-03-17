@@ -13,6 +13,8 @@ class ProfileHeaderTableViewCell: UITableViewCell {
     @IBOutlet weak var lblNumOfServices: UILabel!
     @IBOutlet weak var lblTitleNumOfServices: UILabel!
     @IBOutlet weak var imgUserImg: UIImageView!
+    @IBOutlet weak var lbl_Availbilty: UILabel!
+    @IBOutlet weak var btn_switchControl: UISwitch!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

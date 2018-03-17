@@ -17,7 +17,8 @@ import ESPullToRefresh
 class MyOrdersViewController: UIViewController,ToastAlertProtocol {
 
   
-    @IBOutlet weak var SegmentControl: BetterSegmentedControl!
+    var SegmentControl: BetterSegmentedControl!
+    @IBOutlet weak var SegmentControlContainer: UIView!
     var viewModel: OrderViewModel!
     var PendingPageNum : Int!
     var ClosedPageNum : Int!
@@ -106,24 +107,44 @@ class MyOrdersViewController: UIViewController,ToastAlertProtocol {
     
     func adjustSegmentControl ()
     {
-        SegmentControl.titles = [NSLocalizedString("opened", comment: ""), NSLocalizedString("finished", comment: "")]
-        SegmentControl.titleFont = UIFont(name: Constants.FONTS.FONT_AR, size: 16.0)!
-        SegmentControl.selectedTitleFont = UIFont(name: Constants.FONTS.FONT_AR, size: 16.0)!
+        SegmentControl = BetterSegmentedControl(
+            frame: CGRect(x: (self.navigationController?.navigationBar.center.x)! - ((self.navigationController?.navigationBar.width)! - 30)/2 , y: 5, width: (self.navigationController?.navigationBar.width)! - 30 , height: 41),
+            titles: [NSLocalizedString("finished", comment: ""), NSLocalizedString("opened", comment: "")],
+            index: 1,
+            options: [.backgroundColor(UIColor.clear),
+                      .titleColor(UIColor.ashGrey),
+                      .indicatorViewBackgroundColor(UIColor.YellowSEGMENT),
+                      .selectedTitleColor(.white),
+                      .titleFont(UIFont(name: Constants.FONTS.FONT_AR, size: 16.0)!),
+                      .selectedTitleFont(UIFont(name: Constants.FONTS.FONT_AR, size: 16.0)!)]
+        )
+        
         SegmentControl.addTarget(self, action: #selector(navigationSegmentedControlValueChanged(_:)), for: .valueChanged)
         NotificationCenter.default.addObserver(self, selector: #selector(self.NWConnectivityDidChangeCalled) , name: .NWConnectivityDidChange, object: nil)
+        SegmentControl.semanticContentAttribute = .forceRightToLeft
+        SegmentControl.tintColor = UIColor.ashGrey
+        SegmentControl.cornerRadius = 10.0
+        SegmentControl.backgroundColor = UIColor.clear
+        self.SegmentControlContainer.addSubview(SegmentControl)
+        
+        
+ 
     }
     
     @objc func navigationSegmentedControlValueChanged(_ sender: BetterSegmentedControl) {
      if sender.index == 0  {
-            self.getPendingOrdersWithPageNum(PendingPageNum)
-            isPendingData = true
-            IsClosedData = false
+        
+        self.getClosedOrdersWithPageNum(ClosedPageNum)
+        isPendingData = false
+        IsClosedData = true
+        
         }
         else
         {
-            self.getClosedOrdersWithPageNum(ClosedPageNum)
-            isPendingData = false
-            IsClosedData = true
+            self.getPendingOrdersWithPageNum(PendingPageNum)
+            isPendingData = true
+            IsClosedData = false
+         
         }
     }
     

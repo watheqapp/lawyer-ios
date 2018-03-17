@@ -70,6 +70,21 @@ class UserViewModel: ToastAlertProtocol {
         }
     }
     
+    func updateVisiblity(isOnline:Int, completion: @escaping (User?, String?) -> ()){
+        
+        NetworkHandler.requestTarget(target: .updateVisibality(isOnline: isOnline), isDictionary: true) { (result, errorMsg) in
+            if errorMsg == nil {
+                let model = Mapper<UserRootClass>().map(JSONString: result as! String)!
+                let userModel = model.user
+                UserDefaults.standard.rm_setCustomObject(userModel, forKey: Constants.keys.KeyUser)
+
+                completion(userModel,nil)
+            } else{
+                completion(nil,errorMsg)
+            }
+        }
+    }
+    
     func completeUserProfile(userName:String,UseEmail:String,UseImage:String,Userlat:Double,Userlong:Double, completion: @escaping (User?, String?) -> ()){
         
         NetworkHandler.requestTarget(target: .completeProfile(name: userName, email: UseEmail, image: UseImage, latitude:Userlat, longitude:Userlong), isDictionary: true) { (result, errorMsg) in
