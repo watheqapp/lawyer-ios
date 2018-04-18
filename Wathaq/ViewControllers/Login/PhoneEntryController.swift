@@ -125,6 +125,8 @@ class PhoneEntryController: UIViewController,ToastAlertProtocol {
                     case .tooManyRequests:
                         self.showToastMessage(title: NSLocalizedString("Too Many Requests", comment: ""), isBottom: true, isWindowNeeded: false, BackgroundColor: UIColor.redAlert, foregroundColor: UIColor.white)
                         break
+                    case .invalidAppCredential:
+                        break
 
                     default:
                         print("There is an error")

@@ -126,7 +126,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         
         let FRtoken = Messaging.messaging().fcmToken
         
-        
         if FRtoken?.length != 0 && FRtoken != nil
         {
             UserDefaults.standard.set(FRtoken, forKey: "TokenDevice")

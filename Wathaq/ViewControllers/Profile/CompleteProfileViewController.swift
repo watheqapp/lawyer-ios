@@ -268,21 +268,25 @@ class CompleteProfileViewController: UIViewController,ToastAlertProtocol,UIImage
             
             viewModel.completeUserProfile(userName: username, UseEmail: userMail, UseImage: chooseUserImge, Userlat: latitude, Userlong:longtiude, completion: { (userObj, errorMsg) in
                 if errorMsg == nil {
-
                     self.ConfirmButton.stopAnimation()
                     self.view.isUserInteractionEnabled = true
-                    
+                    if userObj != nil
+                    {                    
                     let values = ["displayName": userObj?.name, "email": userObj?.email, "instanceId": userObj?.token!, "uid" :"\(userObj!.userID as! Int)"]
                     Database.database().reference().child("users").child("\(userObj!.userID as! Int)").updateChildValues(values, withCompletionBlock: { (errr, _) in
                         if errr == nil {
                             
                         }
                     })
-
-                    
                       self.showToastMessage(title:NSLocalizedString("Profile Data Completed Thank you", comment: "") , isBottom:true , isWindowNeeded: true, BackgroundColor: UIColor.greenAlert, foregroundColor: UIColor.white)
                     
                     self.goToUploadProfessionalFiles ()
+                    }
+                    else
+                    {
+                        self.showToastMessage(title:NSLocalizedString("SERVER_ERROR", comment: "") , isBottom:true , isWindowNeeded: true, BackgroundColor: UIColor.greenAlert, foregroundColor: UIColor.white)
+
+                    }
                     
                 } else{
                     self.showToastMessage(title:errorMsg! , isBottom:true , isWindowNeeded: true, BackgroundColor: UIColor.redAlert, foregroundColor: UIColor.white)

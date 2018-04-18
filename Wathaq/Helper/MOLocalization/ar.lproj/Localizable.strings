@@ -46,12 +46,12 @@
 "Profile Data Completed Thank you" = "بيانات الملف الشخصي اكتملت , شكرا";
 "Updatelocation" = "حدد موقعك او مقرك";
 "ProveProfession" = "اثبات المهنة";
-"ProveProfessionMsg" = "ضف صورة الهوية ورخصة المهنة";
+"ProveProfessionMsg" = "اضف هويتك ورخصه المهنه";
 "Lawyer" = "موثق";
 "Ma2zon" = "مأذون";
 "SendData" = "إرسال البيانات";
 "idFile" = "الهوية";
-"liscenceFile" = "الرخصة";
+"liscenceFile" = "رخصه المهنه";
 "Take Picture from" = "التقاط صورة من";
 "profession Data files uploaded successfully Thank you" = "الملفات التي تم تحميلها بنجاح";
 "pleaseChooseaddressFirst" = "الرجاء اختيار عنوان";
@@ -92,3 +92,6 @@
 "ChooseAdreess" = "اختيار العنوان";
 "Availbe" = "متاح";
 "NotAvailbe" = "غير متاح";
+"OrderNumber" = "رقم الطلب #";
+"SR" = "رس";
+

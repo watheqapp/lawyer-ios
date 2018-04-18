@@ -20,7 +20,9 @@ class AcceptsOrderViewController: UIViewController,ToastAlertProtocol {
     @IBOutlet weak var img_Map: UIImageView!
 
     @IBOutlet weak var lbl_PriceTitle: UILabel!
-    
+    @IBOutlet weak var lbl_orderNum: UILabel!
+    @IBOutlet weak var lbl_orderNumTitle: UILabel!
+
     var RequestedOrder : Orderdata!
     var ArrToDraw :NSMutableArray!
     var Orderid : String!
@@ -46,10 +48,12 @@ class AcceptsOrderViewController: UIViewController,ToastAlertProtocol {
     
     func adjustOrderDataToDrawWithOrderObj (_ OrderObj : Orderdata)
     {
-        lbl_Price.text = "\(OrderObj.cost as! Int)"
+        lbl_Price.text =  "\(OrderObj.cost as! Int) \(NSLocalizedString("SR", comment:""))"
         btnAccepts.setTitle(NSLocalizedString("Confirm", comment: ""), for: .normal)
         btnCancel.setTitle(NSLocalizedString("Cancel", comment: ""), for: .normal)
-        lbl_PriceTitle.text = NSLocalizedString("Price Coast", comment: "")
+        lbl_PriceTitle.text =   NSLocalizedString("Price Coast", comment: "")
+        lbl_orderNumTitle.text = NSLocalizedString("OrderNumber", comment: "")
+        lbl_orderNum.text = "\(OrderObj.id as! Int)"
         ArrToDraw = NSMutableArray()
         
         let DicOrderType = NSMutableDictionary()
