@@ -363,10 +363,23 @@ extension ChatVC:DZNEmptyDataSetSource
         
         var myMutableString2 = NSMutableAttributedString()
         
-        myMutableString2 = NSMutableAttributedString(string: (OrderObj.client?.name!)!)
-        myMutableString2.setAttributes([NSAttributedStringKey.font :UIFont(name: Constants.FONTS.FONT_AR, size: 18.0)!
-            , NSAttributedStringKey.foregroundColor : UIColor.YellowSEGMENT], range: NSRange(location:0,length:myMutableString2.length)) // What ever range you want to give
+        if let laywerName = OrderObj.client?.name!
+        {
+            myMutableString2 = NSMutableAttributedString(string: (OrderObj.client?.name!)!)
+            myMutableString2.setAttributes([NSAttributedStringKey.font :UIFont(name: Constants.FONTS.FONT_AR, size: 18.0)!
+                , NSAttributedStringKey.foregroundColor : UIColor.YellowSEGMENT], range: NSRange(location:0,length:myMutableString2.length)) // What ever range you want to give
+
+        }
+        else
+        {
+            myMutableString2 = NSMutableAttributedString(string: NSLocalizedString("Moawtheq", comment: ""))
+            myMutableString2.setAttributes([NSAttributedStringKey.font :UIFont(name: Constants.FONTS.FONT_AR, size: 18.0)!
+                , NSAttributedStringKey.foregroundColor : UIColor.YellowSEGMENT], range: NSRange(location:0,length:myMutableString2.length))
             
+        }
+        
+        
+        
             myMutableString.append(myMutableString1)
             myMutableString.append(myMutableString2)
 

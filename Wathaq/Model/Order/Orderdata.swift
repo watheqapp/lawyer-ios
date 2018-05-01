@@ -11,25 +11,23 @@ import ObjectMapper
 
 class Orderdata : NSObject, NSCoding, Mappable{
 
-	var acceptedAt : AnyObject?
-	var category : Category?
-	var client : Client?
-	var clientLat : Float?
-	var clientLong : Float?
-	var clientName : String?
-	var cost : Int?
-	var createdAt : Int?
-	var delivery : String?
+    var id : Int?
+    var status : String?
+    var cost : Int?
+    var delivery : String?
+    var clientName : String?
+    var representativeName : String?
+    var nationalID : Int?
+    var clientLat : Double?
+    var clientLong : Double?
     var time : String?
     var distance : String?
-
-	var id : Int?
+    var category : Category?
+    var client : Client?
+	var acceptedAt : AnyObject?
+	var createdAt : Int?
 	var isInAcceptLawyerPeriod : Int?
 	var lawyer : MowatheqData?
-	var nationalID : Int?
-	var representativeName : String?
-	var status : String?
-
 
 	class func newInstance(map: Map) -> Mappable?{
 		return Orderdata()
@@ -68,8 +66,8 @@ class Orderdata : NSObject, NSCoding, Mappable{
          acceptedAt = aDecoder.decodeObject(forKey: "accepted_at") as? AnyObject
          category = aDecoder.decodeObject(forKey: "category") as? Category
          client = aDecoder.decodeObject(forKey: "client") as? Client
-         clientLat = aDecoder.decodeObject(forKey: "clientLat") as? Float
-         clientLong = aDecoder.decodeObject(forKey: "clientLong") as? Float
+         clientLat = aDecoder.decodeObject(forKey: "clientLat") as? Double
+         clientLong = aDecoder.decodeObject(forKey: "clientLong") as? Double
          clientName = aDecoder.decodeObject(forKey: "clientName") as? String
          cost = aDecoder.decodeObject(forKey: "cost") as? Int
          createdAt = aDecoder.decodeObject(forKey: "created_at") as? Int

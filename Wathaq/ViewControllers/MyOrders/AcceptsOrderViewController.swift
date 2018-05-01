@@ -85,7 +85,7 @@ class AcceptsOrderViewController: UIViewController,ToastAlertProtocol {
         DicawayType.setValue(NSLocalizedString("AwayFromYou", comment: ""), forKey:"title" )
         ArrToDraw.add(DicawayType)
         
-        let img = "https://maps.googleapis.com/maps/api/staticmap?center=\(OrderObj.clientLat as! Float),\(OrderObj.clientLong as! Float)&zoom=15&size=500x500&maptype=roadmap%20&markers=color:red%7C\(OrderObj.clientLat as! Float),\(OrderObj.clientLong as! Float)&format=png&style=feature:poi%7Celement:labels%7Cvisibility:off"
+        let img = "https://maps.googleapis.com/maps/api/staticmap?center=\(OrderObj.clientLat as! Double),\(OrderObj.clientLong as! Double)&zoom=15&size=500x500&maptype=roadmap%20&markers=color:red%7C\(OrderObj.clientLat as! Double),\(OrderObj.clientLong as! Double)&format=png&style=feature:poi%7Celement:labels%7Cvisibility:off"
        let imgUrl =  URL(string:img)
         img_Map.kf.setImage(with:imgUrl, placeholder: UIImage.init(named:"" ), options: nil, progressBlock: nil, completionHandler: nil)
 
@@ -121,6 +121,19 @@ class AcceptsOrderViewController: UIViewController,ToastAlertProtocol {
                 self.ErrorStr = ""
                 
                 self.CancelOrder(AnyClass.self)
+                //GO TO CHAT VIEW
+                
+                let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let ChatView  = mainStoryboard.instantiateViewController(withIdentifier: "Chat") as! ChatVC
+                
+                ChatView.OrderObj = self.RequestedOrder
+                ChatView.ClientObj = self.RequestedOrder.client
+                
+                if let tabBarController = UIApplication.shared.delegate?.window??.rootViewController as? UITabBarController {
+                    tabBarController.selectedIndex = 0
+                    let currentNavigationController = tabBarController.selectedViewController as! UINavigationController
+                    currentNavigationController.pushViewController(ChatView)
+                }
                 
                 self.showToastMessage(title:NSLocalizedString("OrderAccepted", comment: "") , isBottom:true , isWindowNeeded: true, BackgroundColor: UIColor.greenAlert, foregroundColor: UIColor.white)
 
