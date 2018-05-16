@@ -11,9 +11,9 @@ pod 'Alamofire', '~> 4.3'   # network helper
   pod 'ObjectMapper'  #mapping json object
   pod 'RealmSwift'  #Realm
   pod 'DZNEmptyDataSet' #empty state for Tableviews
-  pod 'Kingfisher'    # for downloading and caching images from the web
+  pod 'Kingfisher'  , '4.3.1'  # for downloading and caching images from the web
   pod 'SwiftMessages'
-  pod 'NVActivityIndicatorView' #Set of loadings
+  pod 'NVActivityIndicatorView', '4.0.0' #Set of loadings
   pod 'Firebase'
   pod 'Firebase/Auth'
   pod 'Firebase/Core'

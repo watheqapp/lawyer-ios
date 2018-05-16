@@ -98,7 +98,7 @@ class UploadProfissionalFilesViewController: UIViewController ,UIImagePickerCont
             FileType = "licenseFile"
         }
 
-        let actionSheetController: UIAlertController = UIAlertController(title: "", message: NSLocalizedString("Take Picture from", comment: ""), preferredStyle: .actionSheet)
+        let actionSheetController: UIAlertController = UIAlertController(title: "", message: NSLocalizedString("Take Picture from", comment: ""), preferredStyle: .alert)
         
         let CancelButton = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel) { _ in
         }
