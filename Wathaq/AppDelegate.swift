@@ -50,7 +50,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         if launchOptions?[UIApplicationLaunchOptionsKey.remoteNotification] != nil
         {
             let remoteNotif = launchOptions?[UIApplicationLaunchOptionsKey.remoteNotification] as? NSDictionary
-            
+            if let userType =  remoteNotif![AnyHashable("type")]
+            {
             print(remoteNotif)
             if remoteNotif![AnyHashable("type")]! as! String == "NewRequest"
             {
@@ -97,6 +98,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
                     currentNavigationController.pushViewController(ChatView)
                 }
                 
+            }
+        }
+            else
+            {
+                if  remoteNotif![AnyHashable("gcm.notification.type")] as! String == "message"
+                {
+                    // print(userInfo)
+                    print(remoteNotif![AnyHashable("gcm.notification.senderId")]!)
+                    
+                    let Orderid = remoteNotif![AnyHashable("gcm.notification.id")]! as! String
+                    print(Orderid)
+                    
+                    var OrderObj = Orderdata()
+                    var ClientObj = Client()
+
+                    OrderObj.id = Int(Orderid)
+                    ClientObj.id = Int(remoteNotif![AnyHashable("gcm.notification.senderId")]! as! String)
+                    
+                    
+                    let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                    let ChatView  = mainStoryboard.instantiateViewController(withIdentifier: "Chat") as! ChatVC
+                    
+                    ChatView.OrderObj = OrderObj
+                    ChatView.ClientObj = ClientObj
+                    
+                    if let tabBarController = UIApplication.shared.delegate?.window??.rootViewController as? UITabBarController {
+                        tabBarController.selectedIndex = 0
+                        let currentNavigationController = tabBarController.selectedViewController as! UINavigationController
+                        currentNavigationController.popToRootViewController(animated: false)
+                        currentNavigationController.pushViewController(ChatView)
+                    }
+                }
             }
             
         }
@@ -150,7 +183,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
             return
         }
         
-        
+        if let userType =  userInfo[AnyHashable("type")]
+        {
         if userInfo[AnyHashable("type")]! as! String == "NewRequest"
         {
             // Print full message.
@@ -197,6 +231,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
                 currentNavigationController.pushViewController(ChatView)
             }
             
+        }
+        }
+        else
+        {
+            if  userInfo[AnyHashable("gcm.notification.type")] as! String == "message"
+            {
+                 print(userInfo)
+                print(userInfo[AnyHashable("gcm.notification.senderId")]!)
+                
+                let Orderid = userInfo[AnyHashable("gcm.notification.id")]! as! String
+                print(Orderid)
+                
+                var OrderObj = Orderdata()
+                var ClientObj = Client()
+
+                OrderObj.id = Int(Orderid)
+                ClientObj.id = Int(userInfo[AnyHashable("gcm.notification.senderId")]! as! String)
+                
+                
+                let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let ChatView  = mainStoryboard.instantiateViewController(withIdentifier: "Chat") as! ChatVC
+                
+                ChatView.OrderObj = OrderObj
+                ChatView.ClientObj = ClientObj
+                
+                if let tabBarController = UIApplication.shared.delegate?.window??.rootViewController as? UITabBarController {
+                    tabBarController.selectedIndex = 0
+                    let currentNavigationController = tabBarController.selectedViewController as! UINavigationController
+                    currentNavigationController.popToRootViewController(animated: false)
+                    currentNavigationController.pushViewController(ChatView)
+                }
+            }
         }
         
         

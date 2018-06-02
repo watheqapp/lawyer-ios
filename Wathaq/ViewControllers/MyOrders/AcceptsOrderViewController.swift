@@ -63,11 +63,11 @@ class AcceptsOrderViewController: UIViewController,ToastAlertProtocol {
 
  
         
-        let DicmoawklName = NSMutableDictionary()
-        DicmoawklName.setValue(OrderObj.client?.name, forKey: "value")
-        DicmoawklName.setValue("Name", forKey: "title")
-
-        ArrToDraw.add(DicmoawklName)
+//        let DicmoawklName = NSMutableDictionary()
+//        DicmoawklName.setValue(OrderObj.client?.name, forKey: "value")
+//        DicmoawklName.setValue("Name", forKey: "title")
+//
+//        ArrToDraw.add(DicmoawklName)
         
         let deliveryLocation = NSMutableDictionary()
         deliveryLocation.setValue(OrderObj.delivery, forKey: "value")

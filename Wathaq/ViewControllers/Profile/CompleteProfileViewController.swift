@@ -272,7 +272,7 @@ class CompleteProfileViewController: UIViewController,ToastAlertProtocol,UIImage
                     self.view.isUserInteractionEnabled = true
                     if userObj != nil
                     {                    
-                    let values = ["displayName": userObj?.name, "email": userObj?.email, "instanceId": userObj?.token!, "uid" :"\(userObj!.userID as! Int)"]
+                    let values = ["displayName": userObj?.name, "email": userObj?.email, "instanceId": userObj?.token!, "uid" :"\(userObj!.userID as! Int)","device":"ios"]
                     Database.database().reference().child("users").child("\(userObj!.userID as! Int)").updateChildValues(values, withCompletionBlock: { (errr, _) in
                         if errr == nil {
                             

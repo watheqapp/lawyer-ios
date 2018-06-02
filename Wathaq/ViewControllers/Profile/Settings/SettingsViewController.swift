@@ -141,12 +141,12 @@ class SettingsViewController: UIViewController,RefreshAppProtocol,ToastAlertProt
             if index == 0
             {
                 webView.title = NSLocalizedString("Terms and Conditions", comment: "")
-                webView.webPage = "http://159.89.41.54/watheq/public/terms"
+                webView.webPage = "http://wathiq.sa/terms"
             }
             else
             {
                 webView.title = NSLocalizedString("Privacy Policy", comment: "")
-                webView.webPage = "http://159.89.41.54/watheq/public/policy"
+                webView.webPage = "http://wathiq.sa/policy"
 
             }
            

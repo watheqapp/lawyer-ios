@@ -33,6 +33,7 @@ class Message {
     var body: String
     var timestamp: Int
     var dayTimestamp: Int
+    var displayName: String
 
  
 
@@ -50,7 +51,7 @@ class Message {
                             let to = receivedMessage["to"] as! String
 
                             let timestamp = receivedMessage["timestamp"] as! Int
-                            let message = Message.init(from: fromID, to: to, body: content, timestamp: timestamp, dayTimestamp: 123)
+                            let message = Message.init(from: fromID, to: to, body: content, timestamp: timestamp, dayTimestamp: 123,displayName: (userObj?.name)!)
                             completion(message)
 
                             
@@ -149,7 +150,7 @@ class Message {
         let userObj:User? = UserDefaults.standard.rm_customObject(forKey: Constants.keys.KeyUser) as? User
 
         
-        let values = ["body": message.body, "from":"\(userObj?.userID as! Int)" , "to": toID , "timestamp":Int(Date().timeIntervalSince1970) , "negatedTimestamp":-Int(Date().timeIntervalSince1970),"Device" : "ios"] as [String : Any]
+        let values = ["body": message.body,"dayTimestamp":message.dayTimestamp, "displayName":message.displayName, "from":"\(userObj?.userID as! Int)" , "to": toID , "timestamp":Int(Date().timeIntervalSince1970) , "negatedTimestamp":-Int(Date().timeIntervalSince1970),"orderId":orderId] as [String : Any]
         Message.uploadMessage(withValues: values, toID: toID, orderId:orderId ,  completion: { (status) in
             completion(status)
         })
@@ -180,11 +181,13 @@ class Message {
 
     
     //MARK: Inits
-    init(from: String, to: String, body: String, timestamp: Int, dayTimestamp: Int) {
+    init(from: String, to: String, body: String, timestamp: Int, dayTimestamp: Int,displayName:String) {
         self.from = from
         self.to = to
         self.body = body
         self.timestamp = timestamp
         self.dayTimestamp = dayTimestamp
+        self.displayName = displayName
+
     }
 }
